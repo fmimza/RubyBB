@@ -77,22 +77,22 @@ ActiveRecord::Schema.define(:version => 20130212011755) do
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
 
   create_table "forums", :force => true do |t|
-    t.string   "name",                                               :null => false
+    t.string   "name",                          :null => false
     t.text     "content"
-    t.integer  "topics_count",   :default => 0,                      :null => false
-    t.integer  "messages_count", :default => 0,                      :null => false
-    t.datetime "created_at",                                         :null => false
-    t.datetime "updated_at",                                         :null => false
+    t.integer  "topics_count",   :default => 0, :null => false
+    t.integer  "messages_count", :default => 0, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "slug"
     t.integer  "updater_id"
     t.integer  "position"
-    t.integer  "follows_count",  :default => 0,                      :null => false
+    t.integer  "follows_count",  :default => 0, :null => false
     t.integer  "parent_id"
     t.integer  "domain_id"
-    t.string   "acl_view",       :default => "[{\"type\":\"All\"}]"
-    t.string   "acl_read",       :default => "[{\"type\":\"All\"}]"
-    t.string   "acl_write",      :default => "[{\"type\":\"All\"}]"
-    t.string   "acl_admin",      :default => "[]"
+    t.string   "acl_view"
+    t.string   "acl_read"
+    t.string   "acl_write"
+    t.string   "acl_admin"
   end
 
   add_index "forums", ["parent_id"], :name => "index_forums_on_parent_id"
@@ -197,25 +197,25 @@ ActiveRecord::Schema.define(:version => 20130212011755) do
   add_index "small_messages", ["user_id"], :name => "index_small_messages_on_user_id"
 
   create_table "topics", :force => true do |t|
-    t.string   "name",                                                 :null => false
+    t.string   "name",                                :null => false
     t.integer  "user_id"
     t.integer  "forum_id"
-    t.integer  "messages_count",   :default => 0,                      :null => false
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
+    t.integer  "messages_count",   :default => 0,     :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "slug"
-    t.integer  "views_count",      :default => 0,                      :null => false
+    t.integer  "views_count",      :default => 0,     :null => false
     t.integer  "viewer_id"
     t.integer  "updater_id"
     t.integer  "last_message_id"
     t.boolean  "pinned",           :default => false
-    t.integer  "follows_count",    :default => 0,                      :null => false
+    t.integer  "follows_count",    :default => 0,     :null => false
     t.integer  "first_message_id"
     t.integer  "domain_id"
-    t.string   "acl_view",         :default => "[{\"type\":\"All\"}]"
-    t.string   "acl_read",         :default => "[{\"type\":\"All\"}]"
-    t.string   "acl_write",        :default => "[{\"type\":\"All\"}]"
-    t.string   "acl_admin",        :default => "[]"
+    t.string   "acl_view"
+    t.string   "acl_read"
+    t.string   "acl_write"
+    t.string   "acl_admin"
   end
 
   add_index "topics", ["first_message_id"], :name => "index_topics_on_first_message_id"

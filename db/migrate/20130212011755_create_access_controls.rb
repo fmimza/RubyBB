@@ -11,15 +11,15 @@ class CreateAccessControls < ActiveRecord::Migration
     add_index :access_controls, [:user_type, :user_id]
     add_index :access_controls, :access
 
-    add_column :forums, :acl_view, :string, default: '[{"type":"All"}]'
-    add_column :forums, :acl_read, :string, default: '[{"type":"All"}]'
-    add_column :forums, :acl_write, :string, default: '[{"type":"All"}]'
-    add_column :forums, :acl_admin, :string, default: '[]'
+    add_column :forums, :acl_view, :string
+    add_column :forums, :acl_read, :string
+    add_column :forums, :acl_write, :string
+    add_column :forums, :acl_admin, :string
 
-    add_column :topics, :acl_view, :string, default: '[{"type":"All"}]'
-    add_column :topics, :acl_read, :string, default: '[{"type":"All"}]'
-    add_column :topics, :acl_write, :string, default: '[{"type":"All"}]'
-    add_column :topics, :acl_admin, :string, default: '[]'
+    add_column :topics, :acl_view, :string
+    add_column :topics, :acl_read, :string
+    add_column :topics, :acl_write, :string
+    add_column :topics, :acl_admin, :string
 
     (Forum.all + Topic.all).each do |o|
       %w[view read write].each do |type|
