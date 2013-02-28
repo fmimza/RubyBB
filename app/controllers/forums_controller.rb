@@ -5,7 +5,7 @@ class ForumsController < ApplicationController
   # GET /forums
   # GET /forums.json
   def index
-    @forums = Forum.includes(:updater, :children).where(:parent_id => nil)
+    @forums = Forum.includes(:updater, :children).where(:parent_id => nil).accessible_for(current_user, 'view')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,7 +32,7 @@ class ForumsController < ApplicationController
     end
     authorize! :read, @forum
 
-    @topics = Topic.select('topics.*').includes(:user, :updater, :first_message).with_bookmarks(current_user).where(:forum_id => @forum.children.map(&:id) << @forum.id).order('topics.pinned desc, topics.updated_at desc').page(params[:page])
+    @topics = Topic.select('topics.*').includes(:user, :updater, :first_message).with_bookmarks(current_user).where(:forum_id => @forum.children.map(&:id) << @forum.id).accessible_for(current_user, 'view').order('topics.pinned desc, topics.updated_at desc').page(params[:page])
     @topics = @topics.includes(:forum) if @forum.children.any?
 
     @pinnable = true

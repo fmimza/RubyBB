@@ -19,6 +19,20 @@ class UsersController < ApplicationController
       format.json { render json: @users, :except => [:email] }
     end
   end
+
+  def tokens
+    @tokens = []
+    @tokens += [{id: "{\"type\":\"All\"}", name: t('common.all')}] if t('common.all').downcase.start_with?(params[:q].downcase)
+    @tokens += [{id: "{\"type\":\"Humans\"}", name: t('common.humans')}] if t('common.humans').downcase.start_with?(params[:q].downcase)
+
+    @tokens += (User.where("name LIKE ?", params[:q] + "%").order(:name) + Group.where("name LIKE ?", params[:q] + "%").order(:name)).map do |o|
+      {id: "{\"id\":#{o.id},\"type\":\"#{o.class}\"}", name: o.name}
+    end
+
+    respond_to do |format|
+      format.json { render json: @tokens }
+    end
+  end
   
   # GET /users/1
   # GET /users/1.json

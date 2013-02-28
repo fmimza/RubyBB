@@ -16,6 +16,8 @@ en:
       default: "%Y-%m-%d, %I:%M %p"
 
   common:
+    all: All
+    humans: Humans
     create: Publish
     update: Update
     read: 'read'

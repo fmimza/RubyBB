@@ -1,5 +1,6 @@
 class Topic < ActiveRecord::Base
   include ActionView::Helpers
+  include Controllable
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history, :scoped], :scope => :domain_id
 

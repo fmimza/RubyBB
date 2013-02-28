@@ -3,6 +3,7 @@
 //= require jquery.caretposition
 //= require jquery.sew
 //= require jquery.tablednd
+//= require jquery.tokeninput
 //= require textarea.jquery
 //= require garlic
 //= require bootstrap
@@ -32,6 +33,19 @@ $(document).ready(function() {
       $this.find('input[type=submit]').addClass('disabled');
       $this.data('submitted', true);
     }
+  });
+
+  $("input[data-token]").each(function(index){
+    $this = $(this);
+    $this.tokenInput("/users/tokens.json", {
+      theme: 'facebook',
+      hintText: null,
+      noResultsText: null,
+      searchingText: null,
+      animateDropdown: false,
+      prePopulate: $this.data('prepopulate'),
+      preventDuplicates: true
+    });
   });
 
   // small messages

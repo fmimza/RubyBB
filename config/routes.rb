@@ -32,6 +32,9 @@ RubyBB::Application.routes.draw do
   devise_for :users, :skip => [:sessions, :registrations]
 
   resources :users, :only => [:index, :show] do
+    collection do
+      get 'tokens'
+    end
     member do
       put 'bot' => :bot
     end

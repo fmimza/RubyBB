@@ -6,6 +6,7 @@ class Group < ActiveRecord::Base
 
   paginates_per 25
 
+  has_many :access_controls, :as => :user, :dependent => :destroy
   has_and_belongs_to_many :users
   belongs_to :user
   attr_accessible :name, :status, :user_ids

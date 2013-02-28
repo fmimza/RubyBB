@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209154250) do
+ActiveRecord::Schema.define(:version => 20130212011755) do
+
+  create_table "access_controls", :force => true do |t|
+    t.integer  "object_id"
+    t.string   "object_type"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "access"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "access_controls", ["access"], :name => "index_access_controls_on_access"
+  add_index "access_controls", ["object_type", "object_id"], :name => "index_access_controls_on_object_type_and_object_id"
+  add_index "access_controls", ["user_type", "user_id"], :name => "index_access_controls_on_user_type_and_user_id"
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id"
@@ -63,18 +77,22 @@ ActiveRecord::Schema.define(:version => 20130209154250) do
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
 
   create_table "forums", :force => true do |t|
-    t.string   "name",                          :null => false
+    t.string   "name",                                               :null => false
     t.text     "content"
-    t.integer  "topics_count",   :default => 0, :null => false
-    t.integer  "messages_count", :default => 0, :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "topics_count",   :default => 0,                      :null => false
+    t.integer  "messages_count", :default => 0,                      :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "slug"
     t.integer  "updater_id"
     t.integer  "position"
-    t.integer  "follows_count",  :default => 0, :null => false
+    t.integer  "follows_count",  :default => 0,                      :null => false
     t.integer  "parent_id"
     t.integer  "domain_id"
+    t.string   "acl_view",       :default => "[{\"type\":\"All\"}]"
+    t.string   "acl_read",       :default => "[{\"type\":\"All\"}]"
+    t.string   "acl_write",      :default => "[{\"type\":\"All\"}]"
+    t.string   "acl_admin",      :default => "[]"
   end
 
   add_index "forums", ["parent_id"], :name => "index_forums_on_parent_id"
@@ -179,21 +197,25 @@ ActiveRecord::Schema.define(:version => 20130209154250) do
   add_index "small_messages", ["user_id"], :name => "index_small_messages_on_user_id"
 
   create_table "topics", :force => true do |t|
-    t.string   "name",                                :null => false
+    t.string   "name",                                                 :null => false
     t.integer  "user_id"
     t.integer  "forum_id"
-    t.integer  "messages_count",   :default => 0,     :null => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.integer  "messages_count",   :default => 0,                      :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
     t.string   "slug"
-    t.integer  "views_count",      :default => 0,     :null => false
+    t.integer  "views_count",      :default => 0,                      :null => false
     t.integer  "viewer_id"
     t.integer  "updater_id"
     t.integer  "last_message_id"
     t.boolean  "pinned",           :default => false
-    t.integer  "follows_count",    :default => 0,     :null => false
+    t.integer  "follows_count",    :default => 0,                      :null => false
     t.integer  "first_message_id"
     t.integer  "domain_id"
+    t.string   "acl_view",         :default => "[{\"type\":\"All\"}]"
+    t.string   "acl_read",         :default => "[{\"type\":\"All\"}]"
+    t.string   "acl_write",        :default => "[{\"type\":\"All\"}]"
+    t.string   "acl_admin",        :default => "[]"
   end
 
   add_index "topics", ["first_message_id"], :name => "index_topics_on_first_message_id"

@@ -1,4 +1,6 @@
 class Forum < ActiveRecord::Base
+  include Controllable
+
   acts_as_tenant(:domain)
   default_scope order(:position, :parent_id, :slug)
 

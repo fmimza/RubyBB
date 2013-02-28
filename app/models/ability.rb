@@ -4,43 +4,66 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :read, Domain
-    can :read, Forum
-    can :read, Topic
-    can :read, Message
-    can :read, SmallMessage
-    can :read, User
+    can :read, Forum do |o|
+      o.accessible_for(user, 'read')
+    end
+
+    can :read, Topic do |o|
+      o.forum.accessible_for(user, 'read') &&
+      o.accessible_for(user, 'read')
+    end
+
+    can :read, Domain # unused
+    can :read, Message # unused
+    can :read, SmallMessage # unused
+    can :read, User # unused
 
     unless user.new_record?
       can :manage, Domain do |o|
         user.sysadmin?
       end
       can [:manage, :position], Forum do |o|
-        user.sysadmin?
+        user.sysadmin? ||
+        o.accessible_for(user, 'admin')
       end
       can :create, Topic do |o|
-        user.human? || user.topics.empty? || user.sysadmin?
+        (user.human? || user.topics.empty? || user.sysadmin?) &&
+        o.accessible_for(user, 'write') &&
+        o.forum.accessible_for(user, 'write')
       end
       can :manage, Topic do |o|
-        user.id == o.user_id || user.sysadmin?
+        user.id == o.user_id || user.sysadmin? ||
+        o.accessible_for(user, 'admin') ||
+        o.forum.accessible_for(user, 'admin')
       end
       cannot :pin, Topic do |o|
-        !user.sysadmin?
+        !user.sysadmin? &&
+        !o.forum.accessible_for(user, 'admin')
       end
       can :create, Message do |o|
-        user.human? || user.messages.empty? || user.sysadmin?
+        (user.human? || user.messages.empty? || user.sysadmin?) &&
+        o.topic.accessible_for(user, 'write') &&
+        o.forum.accessible_for(user, 'write')
       end
       can :manage, Message do |o|
-        user.id == o.user_id || user.sysadmin?
+        user.id == o.user_id || user.sysadmin? ||
+        o.topic.user_id == user.id ||
+        o.accessible_for(user, 'admin') ||
+        o.forum.accessible_for(user, 'admin')
       end
       can :history, Message do |o|
-        user.sysadmin?
+        user.sysadmin? || o.forum.accessible_for(user, 'admin')
       end
       can :create, SmallMessage do |o|
-        user.human? || user.sysadmin?
+        user.human? ||
+        user.sysadmin?
       end
       can :manage, SmallMessage do |o|
-        user.id == o.user_id || user.sysadmin?
+        user.id == o.user_id || user.sysadmin? ||
+        o.message.user_id == user.id ||
+        o.topic.user_id == user.id ||
+        o.accessible_for(user, 'admin') ||
+        o.forum.accessible_for(user, 'admin')
       end
       can :manage, Bookmark do |o|
         user.id == o.user_id
@@ -61,7 +84,8 @@ class Ability
         user.sysadmin?
       end
       can :bot, User do |o|
-        user.sysadmin? && !o.human
+        !o.human &&
+        (user.sysadmin? || o.messages.last.forum.accessible_for(user, 'admin'))
       end
     end
   end
