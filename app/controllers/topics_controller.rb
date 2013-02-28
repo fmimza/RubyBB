@@ -27,7 +27,7 @@ class TopicsController < ApplicationController
     end
 
     @messages = @topic.messages.select('messages.*').includes(:user, :updater, :small_messages => :user).with_follows(current_user).page params[:page]
-    @message = Message.new topic_id: @topic.id
+    @message = @topic.messages.build
 
     if current_user
       b = current_user.bookmarks.find_or_initialize_by_topic_id(@topic.id)

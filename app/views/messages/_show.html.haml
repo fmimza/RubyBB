@@ -31,8 +31,8 @@
       .small_messages
         - message.small_messages.each do |small_message|
           = render 'small_messages/show', small_message: small_message
-        - if can? :create, SmallMessage.new
-          = simple_form_for SmallMessage.new(message_id: message.id), remote: true, html: { id: "new_small_message-#{message.id}" } do |f|
+        - if can? :create, sm = message.small_messages.build
+          = simple_form_for sm, remote: true, html: { id: "new_small_message-#{message.id}" } do |f|
             = f.input :content
             = f.input :message_id, as: :hidden
             = f.submit value: t('common.create'), class: 'hidden'

@@ -31,25 +31,25 @@ class Ability
         o.accessible_for(user, 'write') &&
         o.forum.accessible_for(user, 'write')
       end
-      can :manage, Topic do |o|
+      can [:update, :destroy], Topic do |o|
         user.id == o.user_id || user.sysadmin? ||
         o.accessible_for(user, 'admin') ||
         o.forum.accessible_for(user, 'admin')
       end
-      cannot :pin, Topic do |o|
-        !user.sysadmin? &&
-        !o.forum.accessible_for(user, 'admin')
+      can :pin, Topic do |o|
+        user.sysadmin? ||
+        o.forum.accessible_for(user, 'admin')
       end
       can :create, Message do |o|
         (user.human? || user.messages.empty? || user.sysadmin?) &&
         o.topic.accessible_for(user, 'write') &&
-        o.forum.accessible_for(user, 'write')
+        o.topic.forum.accessible_for(user, 'write')
       end
-      can :manage, Message do |o|
+      can [:update, :destroy], Message do |o|
         user.id == o.user_id || user.sysadmin? ||
         o.topic.user_id == user.id ||
-        o.accessible_for(user, 'admin') ||
-        o.forum.accessible_for(user, 'admin')
+        o.topic.accessible_for(user, 'admin') ||
+        o.topic.forum.accessible_for(user, 'admin')
       end
       can :history, Message do |o|
         user.sysadmin? || o.forum.accessible_for(user, 'admin')
@@ -58,12 +58,12 @@ class Ability
         user.human? ||
         user.sysadmin?
       end
-      can :manage, SmallMessage do |o|
+      can [:update, :destroy], SmallMessage do |o|
         user.id == o.user_id || user.sysadmin? ||
         o.message.user_id == user.id ||
-        o.topic.user_id == user.id ||
-        o.accessible_for(user, 'admin') ||
-        o.forum.accessible_for(user, 'admin')
+        o.message.topic.user_id == user.id ||
+        o.message.topic.accessible_for(user, 'admin') ||
+        o.message.forum.accessible_for(user, 'admin')
       end
       can :manage, Bookmark do |o|
         user.id == o.user_id

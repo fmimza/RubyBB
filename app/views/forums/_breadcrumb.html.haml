@@ -1,5 +1,5 @@
 - if buttons
-  - if can? :create, Topic.new(forum_id: forum.id)
+  - if can? :create, forum.topics.build
     = link_to t('.new_topic'), new_topic_path(forum_id: forum.id), class: 'btn in-breadcrumb'
 
   - if can? :create, Follow.new
