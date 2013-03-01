@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     if request.subdomain.blank? && request.host != 'localhost'
       redirect_to request.url.sub(request.domain, "www.#{request.domain}")
     end
+    ActionMailer::Base.default_url_options[:host] = request.host
     @domain = Domain.find_or_create_by_name(request.host)
     set_current_tenant(@domain)
   end
