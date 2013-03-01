@@ -28,14 +28,15 @@
     .meta
       - if message.updater && (message.updater_id != message.user_id || message.updated_at - 5.minutes > message.created_at)
         %p.date= t('.updated_by', name: message.updater.name, date: l(message.updated_at))
-      .small_messages
-        - message.small_messages.each do |small_message|
-          = render 'small_messages/show', small_message: small_message
-        - if can? :create, sm = message.small_messages.build
-          = simple_form_for sm, remote: true, html: { id: "new_small_message-#{message.id}" } do |f|
-            = f.input :content
-            = f.input :message_id, as: :hidden
-            = f.submit value: t('common.create'), class: 'hidden'
+      - unless @history
+        .small_messages
+          - message.small_messages.each do |small_message|
+            = render 'small_messages/show', small_message: small_message
+          - if can? :create, sm = message.small_messages.build
+            = simple_form_for sm, remote: true, html: { id: "new_small_message-#{message.id}" } do |f|
+              = f.input :content
+              = f.input :message_id, as: :hidden
+              = f.submit value: t('common.create'), class: 'hidden'
   %td.ago.hidden-portrait-phone.meta
     - if @as_notifications
       %p= link_to t('common.remove'), notification_path(message.notification_id), method: :delete, rel: :nofollow, remote: true, class: 'delete_notification'
