@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
   def create
     super
-    resource.update_attribute :sysadmin, true if User.count == 1
+    resource.update_attribute :sysadmin, true if @domain.users_count == 0
   end
 
   def update
