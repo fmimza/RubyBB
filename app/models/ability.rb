@@ -28,7 +28,6 @@ class Ability
       end
       can :create, Topic do |o|
         (user.human? || user.topics.empty? || user.sysadmin?) &&
-        o.accessible_for(user, 'write') &&
         o.forum.accessible_for(user, 'write')
       end
       can [:update, :destroy], Topic do |o|

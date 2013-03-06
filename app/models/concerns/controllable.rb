@@ -46,13 +46,15 @@ module Controllable
 
   def save_access_controls
     %w[view read write admin].each do |type|
-      if send("acl_#{type}_changed?")
+      begin
+        acl = ActiveSupport::JSON.decode('[' + send("acl_#{type}") + ']')
         access_controls.where(access: type).delete_all
-        ActiveSupport::JSON.decode('[' + send("acl_#{type}") + ']').each do |ac|
+        acl.each do |ac|
           if %w[All Humans Group User].include? ac['type']
-            access_controls << AccessControl.new(user_id: ac['id'], user_type: ac['type'], access: type)
+            access_controls << AccessControl.new(user_id: ac['id'].to_i, user_type: ac['type'], access: type)
           end
         end
+      rescue
       end
     end
   end

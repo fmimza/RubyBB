@@ -10,8 +10,18 @@ FactoryGirl.define do
     end
   end
 
+  factory :access_control do
+    user_type 'All'
+    user_id 0
+  end
+
   factory :forum do
     name { Faker::Lorem.sentence(2)[0..24] }
+    after :create do |forum, evaluator|
+      FactoryGirl.create_list(:access_control, 1, object_type: 'Forum', object_id: forum.id, access: 'view')
+      FactoryGirl.create_list(:access_control, 1, object_type: 'Forum', object_id: forum.id, access: 'read')
+      FactoryGirl.create_list(:access_control, 1, object_type: 'Forum', object_id: forum.id, access: 'write')
+    end
   end
 
   factory :topic do
@@ -20,6 +30,9 @@ FactoryGirl.define do
     name { Faker::Lorem.sentence(2)[0..24] }
     after :create do |topic, evaluator|
       FactoryGirl.create_list(:message, 1, topic: topic, user: evaluator.user)
+      FactoryGirl.create_list(:access_control, 1, object_type: 'Topic', object_id: topic.id, access: 'view')
+      FactoryGirl.create_list(:access_control, 1, object_type: 'Topic', object_id: topic.id, access: 'read')
+      FactoryGirl.create_list(:access_control, 1, object_type: 'Topic', object_id: topic.id, access: 'write')
     end
   end
 
