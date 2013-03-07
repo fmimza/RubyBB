@@ -13,8 +13,12 @@ class Ability
       o.accessible_for(user, 'read')
     end
 
+    can :read, Message do |o|
+      o.forum.accessible_for(user, 'read') &&
+      o.topic.accessible_for(user, 'read')
+    end
+
     can :read, Domain # unused
-    can :read, Message # unused
     can :read, SmallMessage # unused
     can :read, User # unused
 

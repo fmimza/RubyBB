@@ -8,10 +8,13 @@ class MessagesController < ApplicationController
     begin
       p = params
       d = "domain:#{request.host}"
-      @messages = Message.search(page: params[:page], load: { include: [:user, :topic, :updater, :small_messages => :user]}) do
+
+      # N+1 queries in the select. I still not find a clean way to check ACL here.
+      @messages = Kaminari.paginate_array(Message.search(page: params[:page], load: { include: [:user, :topic, :updater, :small_messages => :user]}) do
         query { string "#{d} #{p[:q]}", default_operator: 'AND' }
         sort { by :at, 'desc' }
-      end
+      end.select{|m| can? :read, m}).page(1)
+
     rescue
       flash[:error] = I18n.t('search.error')
       @messages = []
