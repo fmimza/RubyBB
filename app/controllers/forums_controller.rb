@@ -1,6 +1,8 @@
 class ForumsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :feed]
   before_filter :get_stats, :only => :index
+  before_filter :check_params, :only => [:show]
+  helper_method :default_column, :default_direction
 
   # GET /forums
   # GET /forums.json
@@ -32,7 +34,7 @@ class ForumsController < ApplicationController
     end
     authorize! :read, @forum
 
-    @topics = Topic.select('topics.*').includes(:user, :updater, :first_message).with_bookmarks(current_user).where(:forum_id => @forum.children.map(&:id) << @forum.id).accessible_for(current_user, 'view').order('topics.pinned desc, topics.updated_at desc').page(params[:page])
+    @topics = Topic.select('topics.*').includes(:user, :updater, :first_message).with_bookmarks(current_user).where(:forum_id => @forum.children.map(&:id) << @forum.id).accessible_for(current_user, 'view').order('topics.pinned desc').order(params[:sort] + " " + params[:direction]).page(params[:page])
     @topics = @topics.includes(:forum) if @forum.children.any?
 
     @pinnable = true
@@ -131,7 +133,22 @@ class ForumsController < ApplicationController
   end
 
   private
+
   def get_stats
     @users = User.where('updated_at >= ?', 5.minutes.ago)
   end
+
+  def default_column
+    'updated_at'
+  end
+
+  def default_direction column
+    %w[messages_count views_count updated_at].include?(column) ? 'desc' : 'asc'
+  end
+
+  def check_params
+    params[:sort] = default_column unless Topic.column_names.include?(params[:sort])
+    params[:direction] = default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
+  end
+
 end

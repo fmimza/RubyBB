@@ -5,10 +5,10 @@
     %tr
       - if @pinnable
         %th.icons
-      %th= t('.topics')
-      %th.fixed.number.hidden-phone= t('.messages')
-      %th.fixed.number.hidden-phone= t('.views')
-      %th.infos.hidden-portrait-phone= t('.last')
+      %th= sortable Topic, :name, t('.topics')
+      %th.fixed.number.hidden-phone= sortable Topic, :messages_count, t('.messages')
+      %th.fixed.number.hidden-phone= sortable Topic, :views_count, t('.views')
+      %th.infos.hidden-portrait-phone= sortable Topic, :updated_at, t('.last')
     - pinned = false
     - @topics.each do |topic|
       %tr{class: "#{pinned && !topic.pinned && @pinnable ? 'separator' : nil} #{@folded ? 'folded' : nil}"}
