@@ -21,12 +21,12 @@ module Controllable
 
   def prePopulate access
     if access_controls.empty? && access != 'admin'
-      return [{id: "{\"type\":\"All\"}", name: I18n.t("common.all")}].to_json
+      return [{id: "{\"type\":\"All\"}", name: I18n.t("acl.all")}].to_json
     end
 
     access_controls.where(access: access).includes(:object).map do |ac|
       if %w[All Humans].include? ac.user_type
-        {id: "{\"type\":\"#{ac.user_type}\"}", name: I18n.t("common.#{ac.user_type.downcase}")}
+        {id: "{\"type\":\"#{ac.user_type}\"}", name: I18n.t("acl.#{ac.user_type.downcase}")}
       else
         {id: "{\"id\":#{ac.user_id},\"type\":\"#{ac.user_type}\"}", name: ac.user.name}
       end

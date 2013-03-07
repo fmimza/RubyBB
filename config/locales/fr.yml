@@ -15,9 +15,13 @@ fr:
     formats:
       default: "%Y-%m-%d, %H:%M"
 
-  common:
+  acl:
     all: Tous
     humans: Humains
+    title: 'Contrôle d''accès'
+    hint: 'Mots-clés : "Tous", "Humains", nom d''utilisateur, nom de groupe.'
+
+  common:
     create: Publier
     update: Mettre à jour
     read: lire
@@ -167,6 +171,8 @@ fr:
       title: Nouveau topic
     edit:
       title: Modification du topic
+    form:
+      more: contrôle d'accès...
   messages:
     index:
       title: Résultats de la recherche
@@ -205,9 +211,18 @@ fr:
         css: CSS
       forum:
         name: Titre
+        parent: Parent
         content: Description
+        acl_view: Forum visible
+        acl_read: Topics visibles
+        acl_write: Topics créables
+        acl_admin: Modérateurs
       topic:
         name: Titre
+        acl_view: Topic visible
+        acl_read: Messages visibles
+        acl_write: Messages créables
+        acl_admin: Modérateurs
       message:
         content: Message
         attachment: Fichier joint (1 Mo)

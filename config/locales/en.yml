@@ -15,9 +15,13 @@ en:
     formats:
       default: "%Y-%m-%d, %I:%M %p"
 
-  common:
+  acl:
     all: All
     humans: Humans
+    title: 'Access control'
+    hint: 'Keywords: "All", "Humans", user name, group name.'
+
+  common:
     create: Publish
     update: Update
     read: 'read'
@@ -167,6 +171,8 @@ en:
       title: New topic
     edit:
       title: Editing topic
+    form:
+      more: access control...
   messages:
     index:
       title: Search results
@@ -205,9 +211,18 @@ en:
         css: CSS
       forum:
         name: Title
+        parent: Parent
         content: Description
+        acl_view: Forum visible
+        acl_read: Topics visible
+        acl_write: Topics creation
+        acl_admin: Moderators
       topic:
         name: Title
+        acl_view: Topic visible
+        acl_read: Messages visible
+        acl_write: Messages creation
+        acl_admin: Moderators
       message:
         content: Message
         attachment: Attachment (1 MB)
