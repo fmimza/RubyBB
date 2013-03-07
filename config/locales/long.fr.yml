@@ -40,16 +40,18 @@ fr:
     Personne ne peut poster plus d'un message ou commentaire toutes les dix secondes.
 
     ### Fonctionnalités
-    * un espace de commentaire vous attend en dessous de chaque message;
-    * suivez message/topic/forum/utilisateur pour être notifié en temps réel des informations que vous attendez;
-    * prévisualisez en temps réel ce que vous écrivez: ce que vous voyez est ce que vous posterez;
-    * un crash ? ce que vous écrivez est sauvegardé automatiquement pendant que vous tapez;
+    * un espace de commentaire vous attend en dessous de chaque message ;
+    * suivez message/topic/forum/utilisateur pour être notifié en temps réel des informations que vous attendez ;
+    * prévisualisez en temps réel ce que vous écrivez: ce que vous voyez est ce que vous posterez ;
+    * un crash ? ce que vous écrivez est sauvegardé automatiquement pendant que vous tapez ;
     * un super moteur de recherche : joker, exclusion, phrases, meta-données...
-    * connectez-vous avec Facebook et Google;
-    * faites des liens automatiquement avec les #hashtags et @utilisateurs;
-    * renommer une catégorie ou un topic ne cassera rien : les anciens liens redirigeront vers les nouveaux;
-    * Des flux RSS pour chaque catégorie et chaque topic;
-    * Personnalisez tout avec votre CSS !
+    * connectez-vous avec Facebook et Google ;
+    * faites des liens automatiquement avec les #hashtags et @utilisateurs ;
+    * renommer une catégorie ou un topic ne cassera rien : les anciens liens redirigeront vers les nouveaux ;
+    * des flux RSS pour chaque catégorie et chaque topic ;
+    * des pièces jointes dans les messages ;
+    * gestion fine des groupes et droits d'accès aux catégories et topics ;
+    * et personnalisez tout avec votre CSS !
 
     ### Contact
     Bug, fonctionnalité, aide, question, traduction, encouragements...

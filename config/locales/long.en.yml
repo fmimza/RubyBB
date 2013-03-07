@@ -48,7 +48,9 @@ en:
     * autolink things with #hashtag and @username in your messages.
     * renaming category and topics won't break anything: old links will redirect to the new ones.
     * RSS in each category and each topic.
-    * custom your CSS!
+    * add attachments to your messages.
+    * precise groups and access controls management.
+    * and custom your CSS!
 
     ### Contact
     Bug report, feature request, help, question, translation, encouragement...
