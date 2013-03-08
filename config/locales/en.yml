@@ -75,6 +75,9 @@ en:
       logout: Logout
       login: Login
       sign_up: Register
+    search:
+      title: "Examples"
+      content: "topic:\"%{topic}\"<br>user:%{user} %{word1}<br>forum:%{forum} -%{word2}<br>%{word3}*"
 
   views:
     pagination:

@@ -35,6 +35,11 @@ $(document).ready(function() {
     }
   });
 
+  $('#q').popover({
+    placement: 'bottom',
+    trigger: 'focus'
+  });
+
   $("input[data-token]").each(function(index){
     $this = $(this);
     $this.tokenInput("/users/tokens.json", {

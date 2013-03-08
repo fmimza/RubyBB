@@ -75,6 +75,8 @@ fr:
       logout: Déconnexion
       login: Connexion
       sign_up: Inscription
+    search:
+      title: "Exemples"
 
   views:
     pagination:

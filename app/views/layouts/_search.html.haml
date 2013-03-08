@@ -1,3 +1,4 @@
 = form_tag messages_path, method: :get, class: 'navbar-search pull-right' do
-  = text_field_tag :q, params[:q], placeholder: t('search.title'), class: 'search-query'
+  - m = Message.last
+  = text_field_tag :q, params[:q], autocomplete: 'off', placeholder: t('search.title'), class: 'search-query', data: {title: t('.title'), content: t('.content', user: m.user.name.split.first, topic: m.topic.name.split.first(2).join(' '), word1: m.content.split.shuffle.first, word2: m.content.split.shuffle.first, word3: m.content.split.shuffle.first[0..3], forum: m.forum.name.split.last), html: true}
   = submit_tag t('search.find'), name: nil, class: 'hidden'
