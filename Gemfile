@@ -33,6 +33,7 @@ end
 # gem 'debugger'
 
 gem 'acts_as_tenant'
+gem 'auto_html', git: 'git://github.com/RubyBB/auto_html.git'
 gem 'bootstrap-sass'
 gem 'cancan'
 gem 'dalli'
