@@ -75,18 +75,18 @@ class Message < ActiveRecord::Base
   def fire_notifications
     @user_ids.each do |uid|
       if uid != self.user_id
-        Notification.find_or_create_by_user_id_and_message_id(uid, self.id).touch
+        Notification.fire(uid, self)
       end
     end
     Follow.not_by(self.user_id).where(:followable_id => self.user_id, :followable_type => 'User').each do |f|
-      Notification.find_or_create_by_user_id_and_message_id(f.user_id, self.id).touch
+      Notification.fire(f.user_id, self)
     end
     Follow.not_by(self.user_id).where(:followable_id => self.topic_id, :followable_type => 'Topic').each do |f|
-      Notification.find_or_create_by_user_id_and_message_id(f.user_id, self.id).touch
+      Notification.fire(f.user_id, self)
     end
     if self.topic.messages_count == 0
       Follow.not_by(self.user_id).where(:followable_id => self.forum_id, :followable_type => 'Forum').each do |f|
-        Notification.find_or_create_by_user_id_and_message_id(f.user_id, self.id).touch
+        Notification.fire(f.user_id, self)
       end
     end
   end

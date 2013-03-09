@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
   protect_from_forgery
-  before_filter :update_current_user, :if => :current_user
   before_filter :set_locale
+  before_filter :update_current_user, :if => :current_user
 
   def set_tenant
     if request.subdomain.blank? && request.host != 'localhost'
@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
   end
 
   def update_current_user
-    current_user.touch
+    # Includes updated_at update
+    current_user.update_attribute :locale, I18n.locale
   end
 
   def render_404

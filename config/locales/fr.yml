@@ -86,6 +86,12 @@ fr:
       next: "&rsaquo;"
       truncate: "..."
 
+  mailer:
+    title: "Nouveau message dans \"%{topic}\""
+    new_message: "Un nouveau message a été posté dans \"%{topic}\" par %{user} :"
+    context: "Voir ce message dans son contexte : %{url}"
+    change: "Modifier les paramètres de notifications : %{url}"
+
   groups:
     status:
       private: privé

@@ -5,9 +5,15 @@ class Notification < ActiveRecord::Base
   acts_as_tenant(:domain)
   belongs_to :user
   belongs_to :message
+  belongs_to :topic
+  belongs_to :forum
 
   after_save :update_notifications_count, :publish
   after_destroy :update_notifications_count
+
+  def self.fire(uid, message)
+    Notification.find_or_create_by_user_id_and_message_id_and_topic_id_and_forum_id(uid, message.id, message.topic_id, message.forum_id).touch
+  end
 
   private
 
@@ -24,5 +30,14 @@ class Notification < ActiveRecord::Base
       link: topic_path(self.message.topic) + '?newest'
     }
     PrivatePub.publish_to "/#{self.user_id}/notifications", data
+
+    # Do not send mail for small_messages
+    if self.user_id != self.message.user_id && !self.read && !self.sent
+      # Do not send mail if a mail has been already sent for this topic and user
+      if Notification.where(user_id: self.user_id, topic_id: self.topic_id, sent: true, read: false).empty?
+        self.update_column :sent, true
+        NotificationMailer.instantly(self).deliver
+      end
+    end
   end
 end

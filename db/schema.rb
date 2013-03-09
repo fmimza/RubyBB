@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212011755) do
+ActiveRecord::Schema.define(:version => 20130309135554) do
 
   create_table "access_controls", :force => true do |t|
     t.integer  "object_id"
@@ -163,10 +163,15 @@ ActiveRecord::Schema.define(:version => 20130212011755) do
     t.datetime "updated_at",                    :null => false
     t.boolean  "read",       :default => false
     t.integer  "domain_id"
+    t.boolean  "sent",       :default => false
+    t.integer  "topic_id"
+    t.integer  "forum_id"
   end
 
+  add_index "notifications", ["forum_id"], :name => "index_notifications_on_forum_id"
   add_index "notifications", ["message_id"], :name => "index_notifications_on_message_id"
   add_index "notifications", ["read"], :name => "index_notifications_on_read"
+  add_index "notifications", ["topic_id"], :name => "index_notifications_on_topic_id"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "sessions", :force => true do |t|
@@ -267,6 +272,7 @@ ActiveRecord::Schema.define(:version => 20130212011755) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.integer  "domain_id"
+    t.string   "locale"
   end
 
   add_index "users", ["birthdate"], :name => "index_users_on_birthdate"
