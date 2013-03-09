@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309135554) do
+ActiveRecord::Schema.define(:version => 20130309143353) do
 
   create_table "access_controls", :force => true do |t|
     t.integer  "object_id"
@@ -273,6 +273,7 @@ ActiveRecord::Schema.define(:version => 20130309135554) do
     t.datetime "locked_at"
     t.integer  "domain_id"
     t.string   "locale"
+    t.boolean  "notify",                 :default => true
   end
 
   add_index "users", ["birthdate"], :name => "index_users_on_birthdate"

@@ -32,7 +32,7 @@ class Notification < ActiveRecord::Base
     PrivatePub.publish_to "/#{self.user_id}/notifications", data
 
     # Do not send mail for small_messages
-    if self.user_id != self.message.user_id && !self.read && !self.sent
+    if self.user_id != self.message.user_id && !self.read && !self.sent && self.user.notify
       # Do not send mail if a mail has been already sent for this topic and user
       if Notification.where(user_id: self.user_id, topic_id: self.topic_id, sent: true, read: false).empty?
         self.update_column :sent, true
