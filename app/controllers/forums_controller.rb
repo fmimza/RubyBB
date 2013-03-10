@@ -17,7 +17,7 @@ class ForumsController < ApplicationController
   def feed
     @forum = Forum.includes(:children).find(params[:id])
     authorize! :read, @forum
-    @topics = Topic.includes(:user, :first_message).where(:forum_id => @forum.children.map(&:id) << @forum.id).order('topics.id desc').limit(10)
+    @topics = Topic.includes(:user, :first_message).where(:forum_id => @forum.children.map(&:id) << @forum.id).accessible_for(nil, 'view').order('topics.id desc').limit(10)
 
     respond_to do |format|
       format.rss { render :layout => false }
