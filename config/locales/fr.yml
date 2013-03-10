@@ -123,6 +123,9 @@ fr:
   follows:
     index:
       title: Suivis
+      no_user: Vous ne suivez encore aucun utilisateur.
+      no_topic: Vous ne suivez encore aucun sujet.
+      no_message: Vous ne suivez encore aucun message.
 
   users:
     gender:

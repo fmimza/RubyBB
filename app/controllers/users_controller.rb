@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-
   before_filter :check_params, :only => [:index]
-  helper_method :default_column, :default_direction
 
   # GET /users
   # GET /users.json
@@ -75,17 +73,9 @@ class UsersController < ApplicationController
 
   private
 
-  def default_column
-    'updated_at'
-  end
-
-  def default_direction column
-    %w[topics_count messages_count updated_at].include?(column) ? 'desc' : 'asc'
-  end
-
   def check_params
-    params[:sort] = default_column unless User.column_names.include?(params[:sort])
-    params[:direction] = default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
+    params[:sort] = User.default_column unless User.column_names.include?(params[:sort])
+    params[:direction] = User.default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
   end
 
 end

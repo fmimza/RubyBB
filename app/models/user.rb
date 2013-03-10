@@ -67,6 +67,14 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :birthdate, :location, :gender, :website, :notify
 
+  def self.default_column
+    'updated_at'
+  end
+
+  def self.default_direction column
+    %w[topics_count messages_count updated_at].include?(column) ? 'desc' : 'asc'
+  end
+
   def self.find_for_database_authentication(conditions={})
     self.where("name = ? or email = ?", conditions[:email], conditions[:email]).limit(1).first
   end

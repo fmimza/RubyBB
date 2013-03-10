@@ -2,7 +2,6 @@ class ForumsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :feed]
   before_filter :get_stats, :only => :index
   before_filter :check_params, :only => [:show]
-  helper_method :default_column, :default_direction
 
   # GET /forums
   # GET /forums.json
@@ -138,17 +137,9 @@ class ForumsController < ApplicationController
     @users = User.where('updated_at >= ?', 5.minutes.ago)
   end
 
-  def default_column
-    'updated_at'
-  end
-
-  def default_direction column
-    %w[messages_count views_count updated_at].include?(column) ? 'desc' : 'asc'
-  end
-
   def check_params
-    params[:sort] = default_column unless Topic.column_names.include?(params[:sort])
-    params[:direction] = default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
+    params[:sort] = Topic.default_column unless Topic.column_names.include?(params[:sort])
+    params[:direction] = Topic.default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
   end
 
 end

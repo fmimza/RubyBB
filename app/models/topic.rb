@@ -36,6 +36,14 @@ class Topic < ActiveRecord::Base
   after_create :increment_parent_counters, :autofollow
   after_destroy :decrement_parent_counters
 
+  def self.default_column
+    'updated_at'
+  end
+
+  def self.default_direction column
+    %w[messages_count views_count updated_at].include?(column) ? 'desc' : 'asc'
+  end
+
   def preview
     truncate(first_message.content, length: 100, separator: ' ', omission: '...')
   end

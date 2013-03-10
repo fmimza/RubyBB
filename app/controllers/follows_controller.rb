@@ -1,4 +1,6 @@
 class FollowsController < ApplicationController
+  before_filter :check_params, :only => [:index]
+
   # GET /follows
   # GET /follows.json
   def index
@@ -103,4 +105,10 @@ class FollowsController < ApplicationController
       topic_url(@follow.followable.topic, page: params[:page], anchor: "m#{@follow.followable_id}")
     end
   end
+
+  def check_params
+    params[:sort] = Topic.default_column unless Topic.column_names.include?(params[:sort])
+    params[:direction] = Topic.default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
+  end
+
 end
