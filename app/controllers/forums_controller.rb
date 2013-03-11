@@ -73,7 +73,7 @@ class ForumsController < ApplicationController
 
     respond_to do |format|
       if @forum.save
-        format.html { redirect_to forums_url, notice: 'Forum was successfully created.' }
+        format.html { redirect_to forums_url, notice: t('forums.created') }
         format.json { render json: @forum, status: :created, location: @forum }
       else
         format.html { render action: "new" }
@@ -109,7 +109,7 @@ class ForumsController < ApplicationController
 
     respond_to do |format|
       if @forum.update_attributes(params[:forum])
-        format.html { redirect_to forums_url, notice: 'Forum was successfully updated.' }
+        format.html { redirect_to forums_url, notice: t('forums.updated') }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

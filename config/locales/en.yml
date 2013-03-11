@@ -94,6 +94,10 @@ en:
     change: "Change notifications settings: %{url}"
 
   groups:
+    created:
+      public: Public group was successfully created.
+      private: Private group was successfully created.
+    updated: Group was successfully updated.
     status:
       private: private
       public: public
@@ -149,6 +153,8 @@ en:
       title: Bookmarks
 
   forums:
+    created: Forum was successfully created.
+    updated: Forum was successfully updated.
     index:
       see_also: 'See also:'
       title: "Forums"
@@ -170,6 +176,8 @@ en:
     edit:
       title: Editing forum
   topics:
+    created: Topic was successfully created.
+    updated: Topic was successfully updated.
     show:
       title: "%{name}"
     list:
@@ -186,6 +194,8 @@ en:
     form:
       more: access control...
   messages:
+    created: Message was successfully posted.
+    updated: Message was successfully updated.
     index:
       title: Search results
     show:

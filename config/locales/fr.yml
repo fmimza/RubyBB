@@ -93,6 +93,10 @@ fr:
     change: "Modifier les paramètres de notifications : %{url}"
 
   groups:
+    created:
+      public: Le groupe public a été créé avec succès.
+      private: Le groupe privé a été créé avec succès.
+    updated: Le groupe a été mis à jour avec succès.
     status:
       private: privé
       public: public
@@ -148,6 +152,8 @@ fr:
       title: Marque-pages
 
   forums:
+    created: Le forum a été créé avec succès.
+    updated: Le forum a été mis à jour avec succès.
     index:
       see_also: 'Voir aussi :'
       title: "Forums"
@@ -169,6 +175,8 @@ fr:
     edit:
       title: Modification du forum
   topics:
+    created: Le topic a été créé avec succès.
+    updated: Le topic a été mis à jour avec succès.
     show:
       title: "%{name}"
     list:
@@ -185,6 +193,8 @@ fr:
     form:
       more: contrôle d'accès...
   messages:
+    created: Le message a été posté avec succès.
+    updated: Le message a été mis à jour avec succès.
     index:
       title: Résultats de la recherche
     show:

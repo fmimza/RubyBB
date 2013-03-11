@@ -77,7 +77,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to topic_url(@topic), notice: 'Topic was successfully created.' }
+        format.html { redirect_to topic_url(@topic), notice: t('topics.created') }
         format.json { render json: @topic, status: :created, location: @topic }
       else
         format.html { render action: "new" }
@@ -92,7 +92,7 @@ class TopicsController < ApplicationController
     authorize! :pin, @topic
     @topic.update_column :pinned, !@topic.pinned
     respond_to do |format|
-      format.html { redirect_to forum_url(@topic.forum), notice: 'Topic was successfully updated.' }
+      format.html { redirect_to forum_url(@topic.forum), notice: t('topics.updated') }
       format.json { head :no_content }
     end
   end
