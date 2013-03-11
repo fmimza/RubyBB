@@ -32,6 +32,16 @@ class UsersController < ApplicationController
     end
   end
   
+  def ajax
+    @tokens = User.where("name LIKE ?", params[:q] + "%").order(:name).map do |o|
+      {id: o.id, name: o.name}
+    end
+
+    respond_to do |format|
+      format.json { render json: @tokens }
+    end
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

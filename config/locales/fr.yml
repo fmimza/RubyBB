@@ -250,6 +250,8 @@ fr:
       group:
         name: Nom
         status: Statut
+        user_ids: Utilisateurs
+        users_count: Utilisateurs
       user:
         email: Email
         password: Mot de passe

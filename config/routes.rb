@@ -34,6 +34,7 @@ RubyBB::Application.routes.draw do
   resources :users, :only => [:index, :show] do
     collection do
       get 'tokens'
+      get 'ajax'
     end
     member do
       put 'bot' => :bot

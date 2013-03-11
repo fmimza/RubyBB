@@ -251,6 +251,8 @@ en:
       group:
         name: Name
         status: Status
+        user_ids: Users
+        users_count: Users
       user:
         email: Email
         password: Password

@@ -53,6 +53,19 @@ $(document).ready(function() {
     });
   });
 
+  $("input[data-users]").each(function(index){
+    $this = $(this);
+    $this.tokenInput("/users/ajax.json", {
+      theme: 'facebook',
+      hintText: null,
+      noResultsText: null,
+      searchingText: null,
+      animateDropdown: false,
+      prePopulate: $this.data('prepopulate'),
+      preventDuplicates: true
+    });
+  });
+
   // small messages
 
   $(document).on('ajax:beforeSend', 'a.delete_small_message', function(){

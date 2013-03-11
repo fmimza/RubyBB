@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :name, :required => true
     = f.input :status, :required => true, :include_blank => false, :collection => %w[private public].map{|s| [t("common.status.#{s}"), s]}
-    = f.association :users, :collection => User.order(:name), :as => :check_boxes
+    = f.input :user_ids, :input_html => {'data-users' => true, 'data-prepopulate' => @group.prePopulate}
 
   .form-actions
     = f.button :submit, class: 'btn-warning', value: @group.new_record? ? t('common.create') : t('common.update')
