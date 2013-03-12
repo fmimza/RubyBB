@@ -9,7 +9,6 @@ class Topic < ActiveRecord::Base
   acts_as_tenant(:domain)
   belongs_to :domain, :counter_cache => true
   belongs_to :viewer, :class_name => 'User', :foreign_key => 'viewer_id'
-  belongs_to :updater, :class_name => 'User', :foreign_key => 'updater_id'
   belongs_to :first_message, :class_name => 'Message', :foreign_key => 'first_message_id'
   belongs_to :last_message, :class_name => 'Message', :foreign_key => 'last_message_id'
   belongs_to :user, :counter_cache => true
@@ -71,8 +70,11 @@ class Topic < ActiveRecord::Base
   end
 
   def decrement_parent_counters
+    last_message_id = forum.messages.last.try(:id)
+    forum.update_column :last_message_id, last_message_id
     if forum.parent_id
       Forum.update_counters forum.parent_id, topics_count: -1
+      forum.parent.update_column :last_message_id, last_message_id
     end
   end
 

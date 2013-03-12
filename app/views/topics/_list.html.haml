@@ -48,11 +48,11 @@
           %p= topic.views_count
         %td.infos.hidden-portrait-phone
           - if topic.messages.any?
-            %p= l topic.updated_at, format: :short
+            %p= l topic.last_message.updated_at, format: :short
             - unless @folded
               %p
                 = t('common.by')
-                = username topic.updater
+                = username topic.last_message.user
       - pinned = topic.pinned
 
   = paginate @topics

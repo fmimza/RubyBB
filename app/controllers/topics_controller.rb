@@ -71,7 +71,6 @@ class TopicsController < ApplicationController
     @topic = Topic.new(params[:topic])
     @topic.user_id = current_user.id
     authorize! :create, @topic
-    @topic.updater_id = current_user.id
     message = @topic.messages.first
     message.user_id = current_user.id
 

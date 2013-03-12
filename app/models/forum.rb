@@ -10,8 +10,9 @@ class Forum < ActiveRecord::Base
   has_many :children, :class_name => 'Forum', :foreign_key => 'parent_id'
   belongs_to :parent, :class_name => 'Forum', :foreign_key => 'parent_id'
   has_many :topics, :dependent => :destroy
+  has_many :messages, :dependent => :destroy
   has_many :follows, :as => :followable, :dependent => :destroy
-  belongs_to :updater, :class_name => 'User', :foreign_key => 'updater_id'
+  belongs_to :last_message, :class_name => 'Message', :foreign_key => 'last_message_id'
   validates :name, :presence => true, :length => { :maximum => 64 }
   validates_uniqueness_to_tenant :name, :case_sensitive => false
   validates :content, :length => { :maximum => 32768 }

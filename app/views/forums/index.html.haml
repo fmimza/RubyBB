@@ -20,7 +20,7 @@
             - if can? :position, forum
               %td.position
                 ☰
-            - cache "forum-#{forum.id}-#{forum.updated_at}" do
+            - cache "forum-#{forum.id}-#{forum.last_message.try(:id)}" do
               %td
                 = link_to forum, :class => :title do
                   %p
@@ -34,11 +34,11 @@
                 %p= t('common.topics_count', count: forum.topics_count)
                 %p= t('common.messages_count', count: forum.messages_count)
               %td.infos.hidden-portrait-phone
-                - if forum.updater_id
-                  %p= l forum.updated_at, format: :short
+                - if forum.last_message
+                  %p= l forum.last_message.updated_at, format: :short
                   %p
                     = t('common.by')
-                    = username forum.updater
+                    = username forum.last_message.user
   .widget
     %h4= t('common.stats')
     %p= t('.counters', topics: @domain.topics_count, messages: @domain.messages_count)

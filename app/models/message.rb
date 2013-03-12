@@ -54,16 +54,25 @@ class Message < ActiveRecord::Base
   def update_parents
     topic.first_message_id = id unless topic.first_message_id
     topic.last_message_id = id
-    topic.updater_id = user_id
     topic.save
-    forum.update_column :updater_id, user_id
+    forum.update_column :last_message_id, id
     if forum.parent_id
       Forum.update_counters forum.parent_id, messages_count: 1
+      forum.parent.update_column :last_message_id, id
     end
   end
 
   def decrement_parent_counters
-    if forum.parent_id
+    if last_message_id = topic.messages.last.try(:id)
+      if id == topic.last_message_id
+        topic.update_column :last_message_id, last_message_id
+        if id == forum.last_message_id
+          forum.update_column :last_message_id, last_message_id
+          forum.parent.update_column :last_message_id, last_message_id if forum.parent
+        end
+      end
+    end
+    if forum.parent
       Forum.update_counters forum.parent_id, messages_count: -1
     end
   end
