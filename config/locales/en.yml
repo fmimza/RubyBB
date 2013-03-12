@@ -79,6 +79,10 @@ en:
       title: "Examples"
       content: "topic:\"%{topic}\"<br>user:%{user} %{word1}<br>forum:%{forum} -%{word2}<br>%{word3}*"
 
+  pages:
+    about:
+      title: À propos
+
   views:
     pagination:
       first: "&laquo;"

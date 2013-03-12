@@ -78,6 +78,10 @@ fr:
     search:
       title: "Exemples"
 
+  pages:
+    about:
+      title: About
+
   views:
     pagination:
       first: "&laquo;"
