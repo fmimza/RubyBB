@@ -15,10 +15,16 @@ namespace :refresh do
     puts "Topics messages_count..."
     Topic.update_all("messages_count=(Select count(*) from messages m where m.topic_id=topics.id)")
 
-    puts "Forum topics_count and messages_count..."
+    puts "Forum topics_count and messages_count ans last_message_id..."
     Forum.all.each{|f|
       Forum.update_counters f.id, messages_count: Message.where(forum_id: f.children.map(&:id) << f.id).count - f.messages_count
       Forum.update_counters f.id, topics_count: Topic.where(forum_id: f.children.map(&:id) << f.id).count - f.topics_count
+      f.update_column :last_message_id, f.all_messages.last.try(:id)
+    }
+
+    puts "Topic last_message_id"
+    Topic.all.each{|t|
+      t.update_column :last_message_id, t.messages.last.try(:id)
     }
 
     puts "Domain messages_count..."

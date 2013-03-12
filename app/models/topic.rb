@@ -70,11 +70,10 @@ class Topic < ActiveRecord::Base
   end
 
   def decrement_parent_counters
-    last_message_id = forum.messages.last.try(:id)
-    forum.update_column :last_message_id, last_message_id
+    forum.update_column :last_message_id, forum.all_messages.last.try(:id)
     if forum.parent_id
       Forum.update_counters forum.parent_id, topics_count: -1
-      forum.parent.update_column :last_message_id, last_message_id
+      forum.parent.update_column :last_message_id, forum.parent.all_messages.last.try(:id)
     end
   end
 
@@ -82,10 +81,27 @@ class Topic < ActiveRecord::Base
     if forum_id_changed?
       messages.update_all forum_id: forum_id
       was = Forum.find(forum_id_was)
-      if was.parent_id != forum.id && was.id != forum.parent_id
-        Forum.update_counters forum_id_was, topics_count: -1, messages_count: -messages_count
-        Forum.update_counters forum_id, topics_count: 1, messages_count: messages_count
+
+      if was.last_message_id == last_message_id
+        was.update_column :last_message_id, was.all_messages.last.try(:id)
       end
+
+      if was.parent_id && was.parent.last_message_id == last_message_id
+        was.parent.update_column :last_message_id, was.parent.all_messages.last.try(:id)
+      end
+
+      if forum.last_message_id < last_message_id
+        forum.update_column :last_message_id, last_message_id
+      end
+
+      if forum.parent_id && forum.parent.last_message_id < last_message_id
+        forum.parent.update_column :last_message_id, last_message_id
+      end
+
+      Forum.update_counters forum_id_was, topics_count: -1, messages_count: -messages_count
+      Forum.update_counters forum_id, topics_count: 1, messages_count: messages_count
+      Forum.update_counters was.parent_id, topics_count: -1, messages_count: -messages_count if was.parent_id
+      Forum.update_counters forum.parent_id, topics_count: 1, messages_count: messages_count if forum.parent_id
     end
   end
 end

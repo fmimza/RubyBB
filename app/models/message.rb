@@ -67,8 +67,8 @@ class Message < ActiveRecord::Base
       if id == topic.last_message_id
         topic.update_column :last_message_id, last_message_id
         if id == forum.last_message_id
-          forum.update_column :last_message_id, last_message_id
-          forum.parent.update_column :last_message_id, last_message_id if forum.parent
+          forum.update_column :last_message_id, forum.all_messages.last.try(:id)
+          forum.parent.update_column :last_message_id, forum.parent.all_messages.last.try(:id) if forum.parent
         end
       end
     end
