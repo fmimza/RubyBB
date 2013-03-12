@@ -1,6 +1,28 @@
 require 'spec_helper'
 
 feature 'User updates' do
+  scenario "its group" do
+    user = sign_in
+    group = create :group, user: user
+
+    visit groups_path
+    page.find(:xpath, "//a[@href='#{edit_group_path(group)}']").click
+    fill_in 'Name', with: 'Group updated'
+    find('.btn-primary').click
+    page.should have_content('Group updated')
+  end
+
+  scenario "somebody else group" do
+    user = sign_in
+    other = create :user
+    group = create :group, user: other
+
+    visit groups_path
+    page.should_not have_xpath "//a[@href='#{edit_group_path(group)}']"
+    visit edit_group_path(group)
+    current_path.should_not == edit_group_path(group)
+  end
+
   scenario "its topic" do
     user = sign_in
     topic = create :topic, user: user

@@ -7,6 +7,6 @@
     = f.input :user_ids, :input_html => {'data-users' => true, 'data-prepopulate' => @group.prePopulate}
 
   .form-actions
-    = f.button :submit, class: 'btn-warning', value: @group.new_record? ? t('common.create') : t('common.update')
+    = f.button :submit, class: @group.new_record? || @group.user_id == current_user.id ? 'btn-primary' : 'btn-warning', value: @group.new_record? ? t('common.create') : t('common.update')
     = link_to t('common.destroy'), @group, method: :delete, class: 'btn btn-danger', data: { confirm: t('common.are_you_sure') } if !@group.new_record? && can?(:destroy, @group)
     = link_to t('common.back'), groups_path, :class => 'btn btn-link'

@@ -36,4 +36,8 @@ feature 'Visitor visits' do
     visit user_path(user)
     page.should have_content(user.name)
   end
+
+  scenario '/about static page' do
+    visit static_path('about')
+  end
 end

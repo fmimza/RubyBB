@@ -77,4 +77,22 @@ feature 'User destroys' do
     visit forums_path
     page.should have_content(forum.name)
   end
+
+  scenario "its group" do
+    user = sign_in
+    group = create :group, user: user
+
+    Capybara.current_session.driver.delete group_path(group)
+    visit groups_path
+    page.should_not have_content(group.name)
+  end
+
+  scenario "a group (should fail)" do
+    user = sign_in
+    group = create :public_group
+
+    Capybara.current_session.driver.delete group_path(group)
+    visit groups_path
+    page.should have_content(group.name)
+  end
 end

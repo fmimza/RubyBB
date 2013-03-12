@@ -9,7 +9,8 @@ feature 'User creates' do
       visit forum_path(forum)
       page.all(:xpath, "//a[@href='#{new_topic_path(forum_id: forum.id)}']").first.click
       fill_in 'Title', with: 'Hello'
-      fill_in 'Message', with: 'Check me'
+      # Use wmd-input instead of Message to avoid confusion with messages ACLs fields
+      fill_in 'wmd-input', with: 'Check me'
       find('.btn-primary').click
       page.should have_content('Hello')
       page.should have_content(user.name)
@@ -54,5 +55,15 @@ feature 'User creates' do
     fill_in 'Title', with: 'My forum'
     find('.btn-warning').click
     page.should have_content('My forum')
+  end
+
+  scenario "a group" do
+    user = sign_in
+    visit groups_path
+    page.all(:xpath, "//a[@href='#{new_group_path}']").first.click
+    fill_in 'Name', with: 'My friends'
+    select 'Private', from: 'Status'
+    find('.btn-primary').click
+    page.should have_content('My friends')
   end
 end

@@ -47,4 +47,15 @@ FactoryGirl.define do
     message
     content { Faker::Lorem.sentence(2) }
   end
+
+  factory :group do
+    user
+    name { Faker::Lorem.sentence(2)[0..24] }
+    status 'private'
+    user_ids ''
+
+    factory :public_group do
+      status 'public'
+    end
+  end
 end

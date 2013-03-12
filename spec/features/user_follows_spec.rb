@@ -18,6 +18,8 @@ feature 'User follows' do
     topic = create :topic, user: other
     visit notifications_path
     page.should have_content topic.first_message.content
+    visit follows_path
+    page.should have_content other.name.split.first
   end
 
   scenario "a forum" do
@@ -36,6 +38,8 @@ feature 'User follows' do
     message = create :message, topic: topic
     visit notifications_path
     page.should have_content message.content
+    visit follows_path
+    page.should have_content topic.name
   end
 
   scenario "a message" do

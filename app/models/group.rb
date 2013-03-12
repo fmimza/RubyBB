@@ -12,7 +12,8 @@ class Group < ActiveRecord::Base
   attr_accessor :user_ids
   attr_accessible :name, :status, :user_ids
 
-  validates :name, :presence => false
+  validates :name, :presence => true
+  validates_uniqueness_to_tenant :name, :case_sensitive => false
   validates :status, :inclusion => { :in => %w[private public] }, :allow_blank => false
 
   scope :for_user, lambda { |user| where('status = "public" or (status = "private" and user_id = ?)', user.id) }

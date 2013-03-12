@@ -5,7 +5,7 @@ class CreateGroups < ActiveRecord::Migration
       t.string :slug
       t.string :status, :null => false, :default => 'private'
       t.references :user, :null => false
-      t.references :domain, :null => false
+      t.references :domain
       t.timestamps
     end
     create_table :groups_users, :id => false do |t|
