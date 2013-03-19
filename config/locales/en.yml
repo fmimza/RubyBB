@@ -191,6 +191,8 @@ en:
      views: Views
      last: Last
      last_page: last page
+    breadcrumb:
+      new_message: Reply
     new:
       title: New topic
     edit:

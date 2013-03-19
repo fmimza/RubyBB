@@ -190,6 +190,8 @@ fr:
      views: Vues
      last: Dernier
      last_page: dernière page
+    breadcrumb:
+      new_message: Répondre
     new:
       title: Nouveau topic
     edit:
