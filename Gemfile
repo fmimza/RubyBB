@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '~>3.2.13'
 gem 'mysql2'
 gem 'thin'
 
@@ -33,7 +33,7 @@ end
 # gem 'debugger'
 
 gem 'acts_as_tenant'
-gem 'auto_html', git: 'git://github.com/RubyBB/auto_html.git'
+gem 'auto_html',  git: 'git://github.com/dejan/auto_html.git'
 gem 'bootstrap-sass'
 gem 'cancan'
 gem 'dalli'
