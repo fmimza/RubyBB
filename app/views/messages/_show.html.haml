@@ -1,4 +1,4 @@
-%tr{class: "#{@folded ? 'folded' : nil} #{@as_notifications && !message.notification_read? ? 'unread' : nil}"}
+%tr{class: "#{@folded ? 'folded' : nil} #{(@as_notifications && !message.notification_read?) || @unread ? 'unread' : nil}"}
   %td.user
     %a{name: "m#{message.id}"}
     %p= username message.user

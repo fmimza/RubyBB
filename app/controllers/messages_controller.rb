@@ -29,9 +29,13 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
-    @message = Message.includes(:topic).find(params[:id])
+    @message = Message.select('messages.*').includes(:topic, :user, :updater, :small_messages => :user).with_follows(current_user).find(params[:id])
     authorize! :read, @message
-    redirect_to topic_url(@message.topic, goto: @message.id)
+    @unread = true
+
+    respond_to do |format|
+      format.html { render partial: 'show', format: :html, layout: false, locals: {message: @message} }
+    end
   end
 
   # GET /messages/new
@@ -62,6 +66,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+        PrivatePub.publish_to "/topics/#{@message.topic_id}", {id: @message.id}
         format.html { redirect_to topic_url(@message.topic, page: Topic.find(@message.topic_id).messages.page.num_pages, anchor: "m#{@message.id}"), notice: t('messages.created') }
         format.json { render json: @message, status: :created, location: @message }
       else
