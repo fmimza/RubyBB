@@ -29,7 +29,7 @@ class Notification < ActiveRecord::Base
       count: self.user.notifications_count,
       link: topic_path(self.message.topic) + '?newest'
     }
-    PrivatePub.publish_to "/#{self.user_id}/notifications", data
+    PrivatePub.publish_to "/users/#{self.user_id}", data
 
     # Do not send mail for small_messages
     if self.user_id != self.message.user_id && !self.read && !self.sent && self.user.notify
