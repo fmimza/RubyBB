@@ -11,17 +11,17 @@ td.user { width: 128px; text-align: center !important; }
 .table.messages td div.message {
   min-height: 113px;
   padding: 8px;
-  border: 1px #DDD solid;
+  border: 1px #e5e5e5 solid;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+  background-color: #f9f9f9;
 }
 .meta { color: #999; font-size: 90%; }
 .meta p { margin-bottom: 0; }
 .meta p.date { display: inline; }
 .small_messages { float: right; text-align: right; }
 .small_messages a { color: #999; }
-.message.odd { background-color: #F9F9F9; }
 .meta label { display: none; }
 .meta input { width: 250px; margin-top: 2px; height: 10px; }
 

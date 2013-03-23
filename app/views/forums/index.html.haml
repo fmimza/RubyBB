@@ -12,7 +12,7 @@
     = t('common.forums')
     %small=link_to t('common.new'), new_forum_path if can? :create, Forum.new
 
-  %table.table.table-striped{id: can?(:position, Forum) ? 'forums' : nil}
+  %table.table.table-bordered{id: can?(:position, Forum) ? 'forums' : nil}
     %tbody
       - @forums.each do |forum|
         - if can? :read, forum

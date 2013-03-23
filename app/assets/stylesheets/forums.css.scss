@@ -5,3 +5,11 @@ tr.tDnD_whileDrag td {
   background-color: #DFD !important;
 }
 tr td.position { cursor: move; }
+
+/* makes links easier to click */
+td a p {
+  margin: 0px;
+  margin-top: -10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

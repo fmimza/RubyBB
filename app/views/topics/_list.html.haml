@@ -1,7 +1,7 @@
 - if @topics.any?
   = paginate @topics
 
-  %table.table.table-striped.topics{class: @folded ? 'table-condensed' : nil}
+  %table.table.table-bordered.topics{class: @folded ? 'table-condensed' : nil}
     %tr
       - if @pinnable
         %th.icons

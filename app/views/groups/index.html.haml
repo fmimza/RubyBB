@@ -11,7 +11,7 @@
 = paginate @groups
 
 - if @groups.any?
-  %table.table.table-striped.groups
+  %table.table.table-bordered.groups
     %tr
       %th= Group.human_attribute_name(:name)
       %th.infos.number= Group.human_attribute_name(:users_count)

@@ -1,6 +1,6 @@
 .-sew-list-container {
   background: white;
-  border: 1px solid #DDD;
+  border: 1px solid #e5e5e5;
   border-radius: 3px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   min-width: 180px;
@@ -17,7 +17,7 @@
 .-sew-list-item {
   display: block;
   padding: 5px 10px;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid #e5e5e5;
   cursor: pointer;
 }
 

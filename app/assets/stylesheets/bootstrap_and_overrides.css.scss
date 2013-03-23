@@ -83,3 +83,19 @@ hr { clear: both; margin-top: 0; border-bottom: 1px #EEE solid;}
   border-top-color: #fff;
   border-bottom-color: #fff;
 }
+
+.form-actions {
+  border-top-color: #e5e5e5;
+  background-color: #f9f9f9;
+}
+
+.table-bordered {
+  background-color: #f9f9f9;
+  border: 1px #ddd solid;
+  th, td {
+    border-left: 0;
+  }
+  th {
+    background-color: #eee;
+  }
+}
