@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :show
 
   # GET /messages
   # GET /messages.json
