@@ -214,7 +214,7 @@ fr:
       quote: citation
       download: "Télécharger le fichier joint : %{name}"
       use: citer
-      updated_by: "Modifié par %{name} à %{date}"
+      updated_by: "Modifié par %{name} le %{date}"
       bot: "%{name} est un robot"
       human: "%{name} est un humain"
       i_am_a_bot: "Vous ne pouvez plus poster : vous devez attendre l'approbation de quelqu'un avant de continuer."
