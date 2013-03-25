@@ -9,7 +9,7 @@ module Spammable
   private
 
   def check_spam
-    return true if !user.last_post_at
+    return true if !user.last_post_at || user.sysadmin
     if user.last_post_at >= Time.now - 10
       errors[:spam] = "spam"
       user.update_column :human, false unless /:\/\//.match(content).nil?

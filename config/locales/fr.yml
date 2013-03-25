@@ -117,6 +117,7 @@ fr:
       title: Gestion du groupe
 
   domains:
+    updated: La configuration a été mise à jour avec succès.
     show:
       title: Configuration
       update: Mettre à jour
@@ -156,6 +157,8 @@ fr:
       title: Marque-pages
 
   forums:
+    example: "Forum d'exemple"
+    content_example: "Vous pouvez modifier cette description en cliquant sur « Forum d'exemple » puis « Modifier »"
     created: Le forum a été créé avec succès.
     updated: Le forum a été mis à jour avec succès.
     index:
@@ -179,6 +182,7 @@ fr:
     edit:
       title: Modification du forum
   topics:
+    example: "Topic d'exemple"
     created: Le topic a été créé avec succès.
     updated: Le topic a été mis à jour avec succès.
     show:
@@ -198,7 +202,10 @@ fr:
       title: Modification du topic
     form:
       more: contrôle d'accès...
+  small_messages:
+    example: "Hey ! Supprime ce petit message en cliquant sur la croix :)"
   messages:
+    example: "Message d'exemple. Cliquez sur « Modifier » en haut pour modifier le titre du topic, ou cliquez sur « Modifier » à gauche pour modifier ce contenu."
     created: Le message a été posté avec succès.
     updated: Le message a été mis à jour avec succès.
     index:

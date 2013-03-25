@@ -13,6 +13,10 @@ en:
       That's okay, take a breath and be helped on our [forums](%{root})!
 
   help:
+    first_steps: |
+      ### Good job!
+      You can now play with [settings](%{settings}) to set your forum title and stuff!
+
     groups: |
       ### What are groups?
       They allow you to manage categories, topics and messages access control.
@@ -26,7 +30,7 @@ en:
 
   home: |
     ## Hey!
-    This forum is empty. Be the first registered user and become its administrator!
+    This forum is empty. [Become %{host} administrator](%{setup})!
 
   about: |
     ### About

@@ -1,12 +1,16 @@
 - if @domain.users_count == 0 && @forums.empty?
   .widget
     :markdown
-      #{t('home')}
+      #{t('home', host: request.host, setup: new_user_registration_path)}
 
 - else
   - if @domain.content.present?
     .widget
       = raw @domain.rendered_content
+  - elsif @domain.title_was.blank?
+    .alert.alert-success
+      :markdown
+        #{t('help.first_steps', settings: admin_path, forum: new_forum_path)}
 
   %h1
     = t('common.forums')

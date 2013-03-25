@@ -13,6 +13,10 @@ fr:
       Pas de soucis, inspirez un bon coup et jetez un œil à nos [forums](%{root}) !
 
   help:
+    first_steps: |
+      ### Bon travail !
+      Vous pouvez maintenant jouer avec la [configuration](%{settings}) pour personnaliser votre forum !
+
     groups: |
       ### À quoi servent les groupes ?
       Ils permettent, lors de la création d'une catégorie, topic ou message de décider qui a
@@ -27,7 +31,7 @@ fr:
 
   home: |
     ## Hey !
-    Ce forum est vide. Soyez le premier utilisateur inscrit et devenez son administrateur !
+    Ce forum est vide. [Devenez l'administrateur de %{host}](%{setup}) !
 
   about: |
     ### À propos

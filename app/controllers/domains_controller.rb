@@ -16,7 +16,7 @@ class DomainsController < ApplicationController
     authorize! :manage, @domain
     @domain.banner.destroy
     respond_to do |format|
-      format.html { redirect_to domains_url, notice: 'Domain was successfully updated.' }
+      format.html { redirect_to domains_url }
       format.json { head :no_content }
       format.js
     end
@@ -28,7 +28,7 @@ class DomainsController < ApplicationController
     authorize! :manage, @domain
     respond_to do |format|
       if @domain.update_attributes(params[:domain])
-        format.html { redirect_to domains_url, notice: 'Domain was successfully updated.' }
+        format.html { redirect_to domains_url, notice: t('domains.updated') }
         format.json { head :no_content }
       else
         format.html { render action: :show }

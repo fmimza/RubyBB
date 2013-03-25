@@ -118,6 +118,7 @@ en:
       title: Edit group
 
   domains:
+    updated: Settings were successfully updated.
     show:
       title: Settings
       update: Update
@@ -157,6 +158,8 @@ en:
       title: Bookmarks
 
   forums:
+    example: Demo forum
+    content_example: 'You can edit this description by clicking "Demo forum" and then "Edit".'
     created: Forum was successfully created.
     updated: Forum was successfully updated.
     index:
@@ -180,6 +183,7 @@ en:
     edit:
       title: Editing forum
   topics:
+    example: "Demo topic"
     created: Topic was successfully created.
     updated: Topic was successfully updated.
     show:
@@ -199,7 +203,10 @@ en:
       title: Editing topic
     form:
       more: access control...
+  small_messages:
+    example: 'Hi! Delete this small message by clicking the cross :)'
   messages:
+    example: 'Demo message. Click "Edit" on the top to edit topic title, or click "Edit" on the left to edit this content.'
     created: Message was successfully posted.
     updated: Message was successfully updated.
     index:

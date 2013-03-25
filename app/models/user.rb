@@ -67,6 +67,8 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :birthdate, :location, :gender, :website, :notify
 
+  after_commit :setup_domain
+
   def self.default_column
     'updated_at'
   end
@@ -127,6 +129,27 @@ class User < ActiveRecord::Base
   end
 
 protected
+
+  def setup_domain
+    if domain.users_count == 1
+      update_column :human, true
+      update_column :sysadmin, true
+      f = Forum.create name: I18n.t('forums.example'), content: I18n.t('forums.content_example')
+      t = Topic.new forum_id: f.id, name: I18n.t('topics.example')
+      t.user_id = id
+      t.save
+      m = Message.new topic_id: t.id, content: I18n.t('messages.example')
+      m.user_id = id
+      m.save
+      sm = SmallMessage.new message_id: m.id, content: I18n.t('small_messages.example')
+      sm.user_id = id
+      sm.save
+      %w[view read write].each do |access|
+        AccessControl.create user_type: 'All', user_id: 0, access: access, object_type: 'Forum', object_id: f.id
+        AccessControl.create user_type: 'All', user_id: 0, access: access, object_type: 'Topic', object_id: t.id
+      end
+    end
+  end
 
   # copied from validatable module
   def password_required?

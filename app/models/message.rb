@@ -41,8 +41,9 @@ class Message < ActiveRecord::Base
   end
 
   before_save :set_parents
-  after_create :update_parents, :autofollow
-  after_destroy :decrement_parent_counters
+  after_create :autofollow
+  after_create :update_parents, if: :topic
+  after_destroy :decrement_parent_counters, if: :topic
   after_save :fire_notifications
 
   private

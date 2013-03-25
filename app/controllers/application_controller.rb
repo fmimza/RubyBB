@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     end
     ActionMailer::Base.default_url_options[:host] = request.host
     @domain = Domain.find_or_create_by_name(request.host)
+    @domain.title = request.host if @domain.title.blank?
     set_current_tenant(@domain)
   end
 
