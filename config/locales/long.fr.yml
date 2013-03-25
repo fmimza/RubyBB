@@ -1,4 +1,17 @@
 fr:
+  errors:
+    not_found: |
+      ## Whoops!
+      La page que vous recherchez n'existe pas… ou n'existe plus.
+
+      Pas de soucis, inspirez un bon coup et jetez un œil à nos [forums](%{root}) !
+
+    server_error: |
+      ## Whoops!
+      RubyBB a l'air de buguer :(
+
+      Pas de soucis, inspirez un bon coup et jetez un œil à nos [forums](%{root}) !
+
   help:
     groups: |
       ### À quoi servent les groupes ?

@@ -2,8 +2,6 @@ class ApplicationController < ActionController::Base
   set_current_tenant_through_filter
   prepend_before_filter :set_tenant
 
-  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
-
   protect_from_forgery
   before_filter :set_locale
   before_filter :update_current_user, :if => :current_user
@@ -24,10 +22,6 @@ class ApplicationController < ActionController::Base
   def update_current_user
     # Includes updated_at update
     current_user.update_attribute :locale, I18n.locale
-  end
-
-  def render_404
-    raise ActionController::RoutingError.new('Not Found')
   end
 
   rescue_from CanCan::AccessDenied do |exception|

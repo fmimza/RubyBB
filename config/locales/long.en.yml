@@ -1,4 +1,17 @@
 en:
+  errors:
+    not_found: |
+      ## Whoops!
+      The page you are looking for does not exist (anymore?).
+
+      That's okay, take a breath and look at our [forums](%{root})!
+
+    server_error: |
+      ## Whoops!
+      RubyBB seems to bug :(
+
+      That's okay, take a breath and be helped on our [forums](%{root})!
+
   help:
     groups: |
       ### What are groups?
