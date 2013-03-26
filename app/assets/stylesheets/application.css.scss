@@ -78,3 +78,15 @@ th .asc {
 th .desc {
   background-image: url(/assets/desc.gif);
 }
+
+.hero-unit {
+  background-color: #f9f9f9;
+  border: 1px #ddd solid;
+  form {
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+  label, input, .add-on {
+    padding: 11px;
+  }
+}

@@ -123,6 +123,13 @@ en:
       title: Settings
       update: Update
       more: advanced options...
+    new:
+      welcome: Welcome to the RubyBB forums
+      create: Create
+      about: "Create your own bulletin board by replacing \"www\" by anything you want:"
+      more: It's free and ad-free!
+      taken: already taken :(
+      format: bad format!
 
   notifications:
     index:

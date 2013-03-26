@@ -4,7 +4,9 @@
       #{t('home', host: request.host, setup: new_user_registration_path)}
 
 - else
-  - if @domain.content.present?
+  - if @domain.content == '{{rubybb}}'
+    = render 'domains/new'
+  - elsif @domain.content.present?
     .widget
       = raw @domain.rendered_content
   - elsif @domain.title_was.blank?

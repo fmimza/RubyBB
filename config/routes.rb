@@ -64,6 +64,7 @@ RubyBB::Application.routes.draw do
 
   resources :groups
 
+  get 'check' => 'domains#check'
   get 'admin' => 'domains#show', as: :domains
   put 'admin' => 'domains#update'
   delete 'admin/banner' => 'domains#delete_banner', as: :domain_banner

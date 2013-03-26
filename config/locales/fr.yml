@@ -122,6 +122,13 @@ fr:
       title: Configuration
       update: Mettre à jour
       more: options avancées...
+    new:
+      welcome: Bienvenue sur les forums RubyBB
+      create: Créer
+      about: "Créez votre propre forum de discussion en remplaçant le « www » par ce que vous voulez :"
+      more: C'est gratuit et sans pub !
+      taken: déjà pris :(
+      format: mauvais format !
 
   notifications:
     index:

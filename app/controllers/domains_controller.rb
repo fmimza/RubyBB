@@ -12,6 +12,10 @@ class DomainsController < ApplicationController
     end
   end
 
+  def check
+    render json: Domain.where(name: params[:q]).first.try(:users_count).to_i == 0
+  end
+
   def delete_banner
     authorize! :manage, @domain
     @domain.banner.destroy
