@@ -4,10 +4,14 @@
 .alert, .widget {
   h2, h3 {
     margin-top: 0;
+    line-height: 1em;
   }
+  h4 { margin-top: 0; }
 }
-td p:last-child {
-  margin-bottom: 0;
+td, .alert, .widget {
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .pagination { height: 34px; }
