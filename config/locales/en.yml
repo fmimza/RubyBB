@@ -128,6 +128,7 @@ en:
       create: Create
       about: "Create your own bulletin board by replacing \"www\" by anything you want:"
       more: It's free and ad-free!
+      available: available !
       taken: already taken :(
       format: bad format!
 

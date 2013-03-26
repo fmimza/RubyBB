@@ -5,19 +5,22 @@
     $button = $('.create button');
     $help = $('.create .help-inline');
     function createDomainError(msg) {
-      $group.removeClass('success').addClass('error');
+      $group.removeClass('success')
       $button.attr('disabled', 'disabled');
-      $help.html(msg);
+      if ($input.val()) {
+        $group.addClass('error');
+        $help.html(msg);
+      } else $help.html('');
     }
     $('.create input').keyup(function() {
       slug = $input.val().latinise().toLowerCase().replace(/[^a-z0-9-_.]/g, '-');
       if (slug != $input.val()) $input.val(slug);
-      if (slug.match(/^[a-z0-9][a-z0-9-_.]{0,61}[a-z0-9]$/)) {
+      if (slug.match(/^[a-z0-9]$/) || slug.match(/^[a-z0-9][a-z0-9-_.]{0,61}[a-z0-9]$/)) {
         $.get('check?q=' + slug, function(data) {
           if (data) {
             $group.removeClass('error').addClass('success');
             $button.removeAttr('disabled');
-            $help.html('');
+            $help.html("#{t('.available')}");
           } else createDomainError("#{t('.taken')}");
         });
       } else createDomainError("#{t('.format')}");
