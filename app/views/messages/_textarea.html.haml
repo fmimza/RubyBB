@@ -1,8 +1,8 @@
 #wmd-panel
   #wmd-button-bar
   = f.input :content, :required => true, :input_html => {:rows => 15, :class => 'input-xxlarge wmd-input', :id => 'wmd-input'}
-.preview
-  %table.table.messages
+%table.table.messages.preview
+  %tr
     %td.user
       %p= username current_user
       %p= render 'shared/avatar', user: current_user, size: 100
