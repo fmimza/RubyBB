@@ -35,7 +35,7 @@
             %i.icon-globe
             http://
           %input.input-medium{id: 'slug', type: 'text', maxlength: 63}
-          .add-on .rubybb.com
+          .add-on= ".#{request.domain}"
         %button.btn.btn-large{disabled: 'disabled'}= t('.create')
         .help-inline
   %p= t('.about')

@@ -13,7 +13,7 @@ class DomainsController < ApplicationController
   end
 
   def check
-    render json: Domain.where(name: params[:q]).first.try(:users_count).to_i == 0
+    render json: Domain.where(name: params[:q] + ".#{request.domain}").first.try(:users_count).to_i == 0
   end
 
   def delete_banner
