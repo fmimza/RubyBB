@@ -24,7 +24,7 @@
             - if can? :position, forum
               %td.position
                 ☰
-            - cache "forum-#{forum.id}-#{forum.last_message.try(:id)}" do
+            - cache "forum-#{forum.id}-#{forum.updated_at}-#{forum.last_message.try(:id)}" do
               %td
                 = link_to forum, :class => :title do
                   %p
@@ -33,7 +33,8 @@
                   %p
                     = t('.see_also')
                     =raw forum.children.map{|f| link_to f.name, forum_path(f) if can? :read, f}.reject(&:nil?).join(', ')
-                %p= forum.content
+                - if forum.content.present?
+                  %p= forum.content
               %td.infos.hidden-phone
                 %p= t('common.topics_count', count: forum.topics_count)
                 %p= t('common.messages_count', count: forum.messages_count)
