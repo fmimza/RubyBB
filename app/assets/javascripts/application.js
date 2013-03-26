@@ -1,3 +1,4 @@
+//= require latinise
 //= require jquery
 //= require jquery_ujs
 //= require jquery.caretposition

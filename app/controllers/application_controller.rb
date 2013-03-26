@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   before_filter :update_current_user, :if => :current_user
 
   def set_tenant
-    if request.subdomain.blank? && request.host != 'localhost'
+    if request.subdomain.starts_with? 'www.'
+      redirect_to request.url.sub(request.subdomain, request.subdomain.sub(/^(www\.)+/, ''))
+    elsif request.subdomain.blank? && request.host != 'localhost'
       redirect_to request.url.sub(request.domain, "www.#{request.domain}")
     end
     ActionMailer::Base.default_url_options[:host] = request.host

@@ -1,5 +1,6 @@
 :javascript
   $(document).ready(function() {
+    $input = $('.create input');
     $group = $('.create .control-group');
     $button = $('.create button');
     $help = $('.create .help-inline');
@@ -9,7 +10,8 @@
       $help.html(msg);
     }
     $('.create input').keyup(function() {
-      slug = $('.create input').val();
+      slug = $input.val().latinise().toLowerCase().replace(/[^a-z0-9-_.]/g, '-');
+      if (slug != $input.val()) $input.val(slug);
       if (slug.match(/^[a-z0-9][a-z0-9-_.]{0,61}[a-z0-9]$/)) {
         $.get('check?q=' + slug, function(data) {
           if (data) {

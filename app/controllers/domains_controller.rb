@@ -13,6 +13,7 @@ class DomainsController < ApplicationController
   end
 
   def check
+    params[:q].sub! /^(www\.)+/, ''
     render json: Domain.where(name: params[:q] + ".#{request.domain}").first.try(:users_count).to_i == 0
   end
 
