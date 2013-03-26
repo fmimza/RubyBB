@@ -33,7 +33,7 @@
                   %p
                     = t('.see_also')
                     =raw forum.children.map{|f| link_to f.name, forum_path(f) if can? :read, f}.reject(&:nil?).join(', ')
-                %p.reset= forum.content
+                %p= forum.content
               %td.infos.hidden-phone
                 %p= t('common.topics_count', count: forum.topics_count)
                 %p= t('common.messages_count', count: forum.messages_count)

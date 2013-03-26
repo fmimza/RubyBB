@@ -1,21 +1,28 @@
 fr:
   errors:
     not_found: |
-      ## Whoops!
+      ### Whoops !
       La page que vous recherchez n'existe pas… ou n'existe plus.
 
       Pas de soucis, inspirez un bon coup et jetez un œil à nos [forums](%{root}) !
 
     server_error: |
-      ## Whoops!
+      ### Whoops !
       RubyBB a l'air de buguer :(
 
       Pas de soucis, inspirez un bon coup et jetez un œil à nos [forums](%{root}) !
 
   help:
+    sign_up: |
+      ### Première étape : s'inscrire
+      En tant que premier utilisateur inscrit sur ce nouveau forum, vous serez son administrateur.
+      Vous pourrez jouer avec la configuration et tout gérer.
+
     first_steps: |
       ### Bon travail !
       Vous pouvez maintenant jouer avec la [configuration](%{settings}) pour personnaliser votre forum !
+
+      Naviguez, modifiez ou supprimez librement la première catégorie que nous vous avons créé.
 
     groups: |
       ### À quoi servent les groupes ?
@@ -30,7 +37,7 @@ fr:
       Dans les deux cas, c'est vous qui gérez les membres de vos groupes.
 
   home: |
-    ## Hey !
+    ### Hey !
     Ce forum est vide. [Devenez l'administrateur de %{host}](%{setup}) !
 
   about: |
