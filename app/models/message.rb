@@ -23,6 +23,8 @@ class Message < ActiveRecord::Base
   validates :content, :presence => true, :length => { :maximum => 32768 }
   attr_accessible :content, :attachment, :topic_id
 
+  scope :and_stuff, lambda { select('messages.*').includes(:user, :updater, :small_messages => :user) }
+
   scope :graph, lambda { select(['date(created_at) as date', 'count(id) as value']).group('date') }
   scope :graph_follows, lambda { select(['date(created_at) as date', 'sum(follows_count) as value']).where('follows_count > ?', 0).group('date') }
 

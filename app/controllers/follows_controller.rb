@@ -7,8 +7,8 @@ class FollowsController < ApplicationController
     @folded = true
     @widgets_mode = true
     @users = User.select('users.*').followed_by(current_user)
-    @topics = Topic.select('topics.*').followed_by(current_user).includes(:first_message).with_bookmarks(current_user).order(params[:sort] + " " + params[:direction]).page(params[:page])
-    @messages = Message.select('messages.*').followed_by(current_user).includes(:topic, :user, :updater, :small_messages => :user).order('follows.id DESC').page(params[:page])
+    @topics = Topic.and_stuff.followed_by(current_user).with_bookmarks(current_user).order(params[:sort] + " " + params[:direction]).page(params[:page])
+    @messages = Message.and_stuff.followed_by(current_user).order('follows.id DESC').page(params[:page])
     @meta = true
 
     respond_to do |format|

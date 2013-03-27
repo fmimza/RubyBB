@@ -23,6 +23,8 @@ class Topic < ActiveRecord::Base
 
   has_many :bookmarks, :dependent => :destroy
 
+  scope :and_stuff, lambda { select('topics.*').includes(:user, :first_message, last_message: [:user]) }
+
   scope :with_bookmarks, lambda { |user| select('bookmarks.message_id as bookmarked_id').joins("LEFT JOIN bookmarks ON bookmarks.topic_id = topics.id AND bookmarks.user_id = #{user.try(:id)}") if user }
 
   scope :bookmarked_by, lambda { |user| select('bookmarks.message_id as bookmarked_id').joins("JOIN bookmarks ON bookmarks.topic_id = topics.id AND bookmarks.message_id < topics.last_message_id AND bookmarks.user_id = #{user.try(:id)}") if user }

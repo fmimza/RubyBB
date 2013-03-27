@@ -6,7 +6,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks.json
   def index
     @forum = Forum.new
-    @topics = Topic.select('topics.*').includes(:user, :first_message, last_message: [:user]).bookmarked_by(current_user).accessible_for(current_user, 'view').order("#{params[:sort]} #{params[:order]}").page(params[:page])
+    @topics = Topic.and_stuff.bookmarked_by(current_user).accessible_for(current_user, 'view').order("#{params[:sort]} #{params[:order]}").page(params[:page])
 
     respond_to do |format|
       format.html
