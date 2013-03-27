@@ -20,7 +20,7 @@ feature 'Visitor signs up' do
       email: 'invalid',
       password: 'password',
       password_confirmation: 'password'
-    page.should have_content('Register')
+    page.should have_content('Please review the problems below')
   end
 
   scenario 'with blank password (should fail)' do
@@ -28,7 +28,7 @@ feature 'Visitor signs up' do
       email: 'valid@example.com',
       password: '',
       password_confirmation: ''
-    page.should have_content('Register')
+    page.should have_content('Please review the problems below')
   end 
 
   scenario 'with invalid password confirmation (should fail)' do
@@ -36,6 +36,6 @@ feature 'Visitor signs up' do
       email: 'valid@example.com',
       password: 'password',
       password_confirmation: 'wordpass'
-    page.should have_content('Register')
+    page.should have_content('Please review the problems below')
   end 
 end
