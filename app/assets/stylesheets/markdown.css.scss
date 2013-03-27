@@ -53,6 +53,12 @@
   cursor: pointer;
 }
 
+/* Waiting for a better solution
+   https://github.com/rh/pagedown-rails/issues/10 */
+#wmd-image-button {
+  display: none;
+}
+
 .wmd-button > span {
   background-image: url(/assets/wmd-buttons.png);
   background-repeat: no-repeat;

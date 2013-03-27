@@ -11,7 +11,7 @@ module Renderable
   def render_content
     @user_ids = Array.new
     require 'redcarpet'
-    renderer = Redcarpet::Render::HTML.new filter_html: true
+    renderer = Redcarpet::Render::HTML.new filter_html: true, no_images: true, safe_links_only: true, with_toc_data: true
     extensions = {space_after_headers: true, no_intra_emphasis: true, tables: true, fenced_code_blocks: true, autolink: false, strikethrough: true, superscript: true}
     hashtagged = self.content.gsub(/(^|\s)@([[:alnum:]_-]+)/u) { |tag|
       if user = User.where(name: $2).first

@@ -61,6 +61,7 @@ class User < ActiveRecord::Base
     length: { :in => 6..20 },
     :if => :password_required?
   validates_confirmation_of :password
+  validates_format_of :website, :with => URI::regexp(%w(http https)), :allow_blank => true
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
