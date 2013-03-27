@@ -6,8 +6,8 @@ class DomainsController < ApplicationController
   def show
     authorize! :read, @domain
     respond_to do |format|
-      format.html # show.html.erb
-      format.css { render :text => @domain.css, :content_type => "text/css" }
+      format.html
+      format.css
       format.json { render json: @domain }
     end
   end
