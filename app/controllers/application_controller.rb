@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
+    Time.zone = cookies['time_zone']
     I18n.locale = http_accept_language.preferred_language_from(%w[en fr es])
   end
 

@@ -6,6 +6,7 @@
 //= require jquery.tablednd
 //= require jquery.tokeninput
 //= require textarea.jquery
+//= require detect_timezone
 //= require garlic
 //= require bootstrap
 //= require markdown.converter
@@ -22,6 +23,8 @@
 //
 // Troubles with require_tree which includes scripts twice
 // require_tree .
+
+document.cookie = 'time_zone='+jstz.determine_timezone().timezone.olson_tz+';';
 
 var values = [];
 $(document).ready(function() {
