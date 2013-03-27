@@ -58,6 +58,7 @@ RubyBB::Application.routes.draw do
   end
   resources :bookmarks, :only => :index do
     collection do
+      put '' => :mark_all_as_read
       delete '' => :clear
     end
   end

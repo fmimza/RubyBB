@@ -164,6 +164,7 @@ en:
   bookmarks:
     index:
       title: Bookmarks
+      clear: Reinit tracking
 
   forums:
     example: Demo forum

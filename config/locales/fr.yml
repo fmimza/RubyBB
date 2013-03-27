@@ -163,6 +163,7 @@ fr:
   bookmarks:
     index:
       title: Marque-pages
+      clear: Réinitialiser les suivis
 
   forums:
     example: "Forum d'exemple"
