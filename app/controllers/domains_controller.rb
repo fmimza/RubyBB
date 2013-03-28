@@ -1,13 +1,22 @@
 class DomainsController < ApplicationController
   # @domain is already loaded in an application_controller before_filter
 
+  # Keep dynamic CSS simple
+  skip_filter(*_process_action_callbacks.map(&:filter), only: :css)
+
+  def css
+    @domain = Domain.find(params[:id])
+    respond_to do |format|
+      format.css
+    end
+  end
+
   # GET /admin
   # GET /admin.json
   def show
-    authorize! :read, @domain
+    authorize! :manage, @domain
     respond_to do |format|
       format.html
-      format.css
       format.json { render json: @domain }
     end
   end
