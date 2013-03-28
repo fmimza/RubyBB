@@ -15,6 +15,7 @@ end
 group :development do
   # gem 'query_reviewer'
   gem 'bullet'
+  gem 'meta_request'
 end
 
 group :test do
