@@ -26,7 +26,7 @@
             - if can? :position, forum
               %td.position
                 ☰
-            - cache "forum-#{forum.id}-#{forum.updated_at}-#{forum.last_message.try(:id)}" do
+            - cache "forum-#{forum.id}-#{forum.updated_at}-#{forum.last_message_id}" do
               %td
                 = link_to forum, :class => :title do
                   %p

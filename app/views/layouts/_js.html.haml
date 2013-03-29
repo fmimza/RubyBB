@@ -1,4 +1,7 @@
 = javascript_include_tag "application"
+
+= yield :js
+
 - if can? :read, Notification.new
   = subscribe_to "/users/#{current_user.id}"
   :javascript

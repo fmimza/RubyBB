@@ -1,10 +1,20 @@
--# " cache "topic-#{@topic.id}-messages-page#{params[:page]}-#{current_user.try(:role, @topic.forum_id)||'anon'}-#{@topic.updated_at}" do
-- if true
+- content_for :title, raw(@topic.name)
+= auto_discovery_link_tag(:rss, :format => 'rss')
 
-  - content_for :title, raw(@topic.name)
-  = auto_discovery_link_tag(:rss, :format => 'rss')
+%h1
+  = t('.title', name: @topic.name)
+  %small= link_to t('common.edit'), edit_topic_path(@topic) if can? :update, @topic
 
-  - if @topic.messages.page.num_pages == [params[:page].to_i, 1].max
+= render 'breadcrumb', topic: @topic, buttons: true
+
+= render 'messages/list'
+
+= render 'breadcrumb', topic: @topic, buttons: true
+
+= render 'messages/form', back: false if can? :create, @message
+
+- if @topic.messages.page.num_pages == [params[:page].to_i, 1].max
+  - content_for :js do
     = subscribe_to "/topics/#{@topic.id}"
     :javascript
       $(document).ready(function() {
@@ -15,15 +25,3 @@
           });
         });
       });
-
-  %h1
-    = t('.title', name: @topic.name)
-    %small= link_to t('common.edit'), edit_topic_path(@topic) if can? :update, @topic
-
-  = render 'breadcrumb', topic: @topic, buttons: true
-
-  = render 'messages/list'
-
-  = render 'breadcrumb', topic: @topic, buttons: true
-
-  = render 'messages/form', back: false if can? :create, @message

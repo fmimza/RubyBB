@@ -1,6 +1,3 @@
-:javascript
-  var values = #{@messages.map(&:user).uniq.reject{|u|!u}.map{|u|{val:u.name}}.to_json};
-
 - if @messages.any?
   = paginate @messages
 
@@ -11,3 +8,7 @@
   = paginate @messages
 - else
   %p.no_results= t('search.no_results')
+
+- content_for :js do
+  :javascript
+    var values = #{@messages.map(&:user).uniq.reject{|u|!u}.map{|u|{val:u.name}}.to_json};
