@@ -1,6 +1,6 @@
 class BookmarksController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :check_params, only: :index
+  before_filter(only: :index) { |c| c.send :check_sorting_params, Topic }
 
   # GET /bookmarks
   # GET /bookmarks.json
@@ -34,12 +34,5 @@ class BookmarksController < ApplicationController
       format.html { redirect_to bookmarks_url }
       format.json { head :no_content }
     end
-  end
-
-  private
-
-  def check_params
-    params[:sort] = Topic.default_column unless Topic.column_names.include?(params[:sort])
-    params[:direction] = Topic.default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
   end
 end

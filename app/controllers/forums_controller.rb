@@ -1,7 +1,7 @@
 class ForumsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :feed]
   before_filter :get_stats, :only => :index
-  before_filter :check_params, :only => [:show]
+  before_filter(only: :show) { |c| c.send :check_sorting_params, Topic }
 
   # GET /forums
   # GET /forums.json
@@ -136,10 +136,4 @@ class ForumsController < ApplicationController
   def get_stats
     @users = User.where('updated_at >= ?', 5.minutes.ago)
   end
-
-  def check_params
-    params[:sort] = Topic.default_column unless Topic.column_names.include?(params[:sort])
-    params[:direction] = Topic.default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
-  end
-
 end

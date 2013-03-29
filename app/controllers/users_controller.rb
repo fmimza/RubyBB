@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_filter :check_params, :only => [:index]
+  before_filter(only: :index) { |c| c.send :check_sorting_params, User }
 
   # GET /users
   # GET /users.json
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       format.json { render json: @tokens }
     end
   end
-  
+
   def ajax
     @tokens = User.where("name LIKE ?", params[:q] + "%").order(:name).map do |o|
       {id: o.id, name: o.name}
@@ -80,12 +80,4 @@ class UsersController < ApplicationController
       format.json { render json: @user, :except => [:email] }
     end
   end
-
-  private
-
-  def check_params
-    params[:sort] = User.default_column unless User.column_names.include?(params[:sort])
-    params[:direction] = User.default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
-  end
-
 end

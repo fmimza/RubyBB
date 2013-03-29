@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-  before_filter :check_params, :only => [:index]
+  before_filter(only: :index) { |c| c.send :check_sorting_params, Topic }
 
   # GET /follows
   # GET /follows.json
@@ -105,10 +105,4 @@ class FollowsController < ApplicationController
       topic_url(@follow.followable.topic, page: params[:page], anchor: "m#{@follow.followable_id}")
     end
   end
-
-  def check_params
-    params[:sort] = Topic.default_column unless Topic.column_names.include?(params[:sort])
-    params[:direction] = Topic.default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
-  end
-
 end

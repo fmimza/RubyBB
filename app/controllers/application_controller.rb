@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   before_filter :set_locale
-  before_filter :update_current_user, :if => :current_user
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = exception.message
+    redirect_to root_url
+  end
+
+  private
 
   def set_tenant
     if request.subdomain.starts_with? 'www.'
@@ -21,15 +27,13 @@ class ApplicationController < ActionController::Base
   def set_locale
     Time.zone = cookies['time_zone']
     I18n.locale = http_accept_language.preferred_language_from(%w[en fr es])
+
+    # Also update updated_at
+    current_user.update_attribute :locale, I18n.locale if current_user
   end
 
-  def update_current_user
-    # Includes updated_at update
-    current_user.update_attribute :locale, I18n.locale
-  end
-
-  rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = exception.message
-    redirect_to root_url
+  def check_sorting_params klass
+    params[:sort] = klass.default_column unless klass.column_names.include?(params[:sort])
+    params[:direction] = klass.default_direction(params[:sort]) unless %w[asc desc].include?(params[:direction])
   end
 end
