@@ -82,36 +82,19 @@ class User < ActiveRecord::Base
     self.where("name = ? or email = ?", conditions[:email], conditions[:email]).limit(1).first
   end
 
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:facebook => auth.uid).first
+  def self.find_for_oauth(service, auth, signed_in_resource=nil)
+    user = User.where(service => auth.uid).first
     unless user
-      user = User.where(:facebook => nil, :email => auth.info.email).first
-      user.update_column :facebook, auth.uid if user
+      user = User.where(service => nil, :email => auth.info.email).first
+      user.update_column service, auth.uid if user
     end
     unless user
       user = User.create(
-        name: auth.extra.raw_info.name,
+        name: auth.info.try(:name) || auth.extra.raw_info.name,
         email: auth.info.email,
-        password: Devise.friendly_token[0,20]
+        password: Devise.friendly_token[0,20],
+        service => auth.uid
       )
-      user.update_column :facebook, auth.uid
-    end
-    user
-  end
-
-  def self.find_for_google_oauth2(auth, signed_in_resource=nil)
-    user = User.where(:google => auth.uid).first
-    unless user
-      user = User.where(:google => nil, :email => auth.info.email).first
-      user.update_column :google, auth.uid if user
-    end
-    unless user
-      user = User.create(
-        name: auth.info.name,
-        email: auth.info.email,
-        password: Devise.friendly_token[0,20]
-      )
-      user.update_column :google, auth.uid
     end
     user
   end
