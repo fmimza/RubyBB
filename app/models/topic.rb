@@ -58,6 +58,13 @@ class Topic < ActiveRecord::Base
     last_page == (page||1).to_i
   end
 
+  def viewed_by! user
+    if user && user.id != @topic.viewer_id
+      @topic.update_column :viewer_id, user.id
+      @topic.update_column :views_count, @topic.views_count+1
+    end
+  end
+
   private
 
   def autofollow

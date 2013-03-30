@@ -112,6 +112,12 @@ class User < ActiveRecord::Base
     self.update_column :notifications_count, Notification.where(user_id: self.id, read: false).count
   end
 
+  def bookmark!(topic)
+    b = bookmarks.find_or_initialize_by_topic_id(topic.id)
+    b.message_id = topic.last_message_id
+    b.save!
+  end
+
 protected
 
   def setup_domain

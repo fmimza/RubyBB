@@ -15,30 +15,16 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.select('topics.*').with_follows(current_user).find(params[:id])
-    if request.path != topic_path(@topic)
-      return redirect_to @topic, :status => :moved_permanently
-    end
     authorize! :read, @topic
 
-    if (params.has_key?(:newest) && m_id = current_user.bookmarks.where(topic_id: @topic.id).first.try(&:message_id)) || (m_id = params[:goto])
-      nb = Message.where(topic_id: @topic.id).where('id <= ?', m_id).count
-      page = (nb.to_f / Message::PER_PAGE).ceil
-      return redirect_to topic_url(@topic, page: page > 1 ? page : nil, anchor: "m#{m_id}")
-    end
+    follow_slug_changes && return
+    jump_to_newest_or_bookmark && return
+    current_user.try :bookmark!, @topic
 
     @messages = @topic.messages.and_stuff.with_follows(current_user).page params[:page]
     @message = @topic.messages.build
 
-    if current_user
-      b = current_user.bookmarks.find_or_initialize_by_topic_id(@topic.id)
-      b.message_id = @topic.last_message_id
-      b.save!
-    end
-
-    if current_user && current_user.id != @topic.viewer_id && @topic.last_page?(params[:page])
-      @topic.update_column :viewer_id, current_user.id
-      @topic.update_column :views_count, @topic.views_count+1
-    end
+    @topic.viewed_by!(current_user) if @topic.last_page?(params[:page])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -127,4 +113,21 @@ class TopicsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def follow_slug_changes
+    if request.path != topic_path(@topic)
+      return redirect_to @topic, :status => :moved_permanently
+    end
+  end
+
+  def jump_to_newest_or_bookmark
+    if (current_user && params.has_key?(:newest) && m_id = current_user.bookmarks.where(topic_id: @topic.id).first.try(&:message_id)) || (m_id = params[:goto])
+      nb = Message.where(topic_id: @topic.id).where('id <= ?', m_id).count
+      page = (nb.to_f / Message::PER_PAGE).ceil
+      return redirect_to topic_url(@topic, page: page > 1 ? page : nil, anchor: "m#{m_id}")
+    end
+  end
+
 end
