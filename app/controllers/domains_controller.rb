@@ -5,7 +5,7 @@ class DomainsController < ApplicationController
   skip_filter(*_process_action_callbacks.map(&:filter), only: :css)
 
   def css
-    @domain = Domain.find(params[:id])
+    @domain = Domain.find_by_name(request.host)
     respond_to do |format|
       format.css
     end
