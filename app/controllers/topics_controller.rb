@@ -56,9 +56,8 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(params[:topic])
     @topic.user_id = current_user.id
+    @topic.messages.first.user_id = current_user.id
     authorize! :create, @topic
-    message = @topic.messages.first
-    message.user_id = current_user.id
 
     respond_to do |format|
       if @topic.save
