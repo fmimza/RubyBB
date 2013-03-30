@@ -59,9 +59,9 @@ class Topic < ActiveRecord::Base
   end
 
   def viewed_by! user
-    if user && user.id != @topic.viewer_id
-      @topic.update_column :viewer_id, user.id
-      @topic.update_column :views_count, @topic.views_count+1
+    if user && user.id != self.viewer_id
+      self.update_column :viewer_id, user.id
+      self.update_column :views_count, self.views_count+1
     end
   end
 
