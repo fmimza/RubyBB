@@ -33,6 +33,8 @@ class Topic < ActiveRecord::Base
 
   scope :followed_by, lambda { |user| select('follows.id as follow_id').joins("JOIN follows ON followable_id = topics.id AND followable_type = 'Topic' AND follows.user_id = #{user.try(:id)}") if user }
 
+  scope :child_of, lambda { |forum| where(:forum_id => forum.children.map(&:id) << forum.id) }
+
   after_update :update_counters
   after_create :autofollow
   after_create :increment_parent_counters, if: :forum

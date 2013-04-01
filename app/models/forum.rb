@@ -22,7 +22,7 @@ class Forum < ActiveRecord::Base
   attr_accessible :content, :name, :parent_id
 
   def all_topics
-    Topic.where(:forum_id => children.map(&:id) << id)
+    Topic.child_of(self)
   end
 
   def all_messages

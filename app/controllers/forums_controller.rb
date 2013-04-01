@@ -17,7 +17,7 @@ class ForumsController < ApplicationController
   def feed
     @forum = Forum.includes(:children).find(params[:id])
     authorize! :read, @forum
-    @topics = Topic.includes(:user, :first_message).where(:forum_id => @forum.children.map(&:id) << @forum.id).accessible_for(nil, 'view').order('topics.id desc').limit(10)
+    @topics = Topic.includes(:user, :first_message).child_of(@forum).accessible_for(nil, 'view').order('topics.id desc').limit(10)
 
     respond_to do |format|
       format.rss { render :layout => false }
@@ -33,7 +33,7 @@ class ForumsController < ApplicationController
     end
     authorize! :read, @forum
 
-    @topics = Topic.and_stuff.with_bookmarks(current_user).where(:forum_id => @forum.children.map(&:id) << @forum.id).accessible_for(current_user, 'view').order('topics.pinned desc').order(params[:sort] + " " + params[:direction]).page(params[:page])
+    @topics = Topic.and_stuff.with_bookmarks(current_user).child_of(@forum).accessible_for(current_user, 'view').order('topics.pinned desc').order(params[:sort] + " " + params[:direction]).page(params[:page])
     @topics = @topics.includes(:forum) if @forum.children.any?
 
     @pinnable = true
