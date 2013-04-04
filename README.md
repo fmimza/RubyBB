@@ -9,15 +9,15 @@ A ruby bulletin board
     sudo apt-get install python-software-properties
     sudo add-apt-repository ppa:chris-lea/node.js
     sudo apt-get update
-    sudo apt-get install libxslt1-dev memcached imagemagick libmysqld-dev nodejs curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev gem libyaml-dev
+    sudo apt-get install libxslt1-dev memcached imagemagick libmysqld-dev nodejs curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev gem libyaml-dev libgdbm-dev libncurses5-dev automake bison libffi-dev
 
-### Ruby 1.9.3 with RVM
+### Ruby 2.0.0 with RVM
 
     bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
     echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"' >> ~/.bashrc
     source ~/.bashrc
     rvm pkg install openssl
-    rvm install 1.9.3 --with-openssl-dir=$rvm_path/usr
+    rvm install 2.0.0 --with-openssl-dir=$rvm_path/usr
     rmdir $rvm_path/usr/ssl/certs
     ln -s /etc/ssl/certs $rvm_path/usr/ssl
 
