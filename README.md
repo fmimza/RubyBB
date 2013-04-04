@@ -9,7 +9,7 @@ A ruby bulletin board
     sudo apt-get install python-software-properties
     sudo add-apt-repository ppa:chris-lea/node.js
     sudo apt-get update
-    sudo apt-get install libxslt1-dev memcached imagemagick libmysqld-dev nodejs curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev gem libyaml-dev libgdbm-dev libncurses5-dev automake bison libffi-dev
+    sudo apt-get install libxslt1-dev memcached imagemagick libmysqld-dev nodejs curl git-core build-essential zlib1g-dev libssl-dev libreadline6-dev gem libyaml-dev libgdbm-dev libncurses5-dev automake bison libffi-dev libtool
 
 ### Ruby 2.0.0 with RVM
 
