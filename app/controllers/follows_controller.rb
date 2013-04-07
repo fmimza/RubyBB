@@ -8,7 +8,6 @@ class FollowsController < ApplicationController
     @widgets_mode = true
     @users = User.select('users.*').followed_by(current_user)
     @topics = Topic.and_stuff.followed_by(current_user).with_bookmarks(current_user).order(params[:sort] + " " + params[:direction]).page(params[:page])
-    @messages = Message.and_stuff.followed_by(current_user).order('follows.id DESC').page(params[:page])
     @meta = true
 
     respond_to do |format|
