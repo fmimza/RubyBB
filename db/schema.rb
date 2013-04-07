@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312123916) do
+ActiveRecord::Schema.define(:version => 20130407145952) do
 
   create_table "access_controls", :force => true do |t|
     t.integer  "object_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130312123916) do
     t.datetime "banner_updated_at"
     t.string   "description"
     t.string   "keywords"
+    t.integer  "forums_count",        :default => 0
   end
 
   add_index "domains", ["name"], :name => "index_domains_on_name"

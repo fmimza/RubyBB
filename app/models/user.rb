@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
 protected
 
   def setup_domain
-    if domain.users_count == 1
+    if domain.users_count == 1 && domain.forums_count == 0
       update_column :human, true
       update_column :sysadmin, true
       f = Forum.create name: I18n.t('forums.example'), content: I18n.t('forums.content_example')

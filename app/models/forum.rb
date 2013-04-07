@@ -2,6 +2,7 @@ class Forum < ActiveRecord::Base
   include Controllable
 
   acts_as_tenant(:domain)
+  belongs_to :domain, :counter_cache => true
   default_scope order(:position, :parent_id, :slug)
 
   extend FriendlyId
