@@ -15,10 +15,10 @@
       %tr{class: "#{pinned && !topic.pinned && @pinnable ? 'separator' : nil} #{@folded ? 'folded' : nil}"}
         - if @pinnable
           - if can?(:pin, topic)
-            %td
+            %td.pin
               - if topic.pinned
                 = link_to pin_topic_path(topic), method: 'put', title: t('common.unpin') do
-                  %i.icon-circle-arrow-right
+                  %i.icon-pushpin
               - else
                 = link_to pin_topic_path(topic), method: 'put', title: t('common.pin_on') do
                   %i.icon-arrow-up

@@ -11,12 +11,17 @@
  * require_self
  *= require gritter
  *= require_tree .
+ *= require font-awesome
  */
 
 body {
   color: #000;
   letter-spacing: 0.1em;
   font-size: 13px;
+}
+
+.follow a, .pin a {
+  text-decoration: none;
 }
 
 table.forums, table.topics, table.messages {

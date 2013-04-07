@@ -44,6 +44,7 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 # native friendly_id does not handle both scoped and history
 gem 'friendly_id', git: 'git://github.com/norman/friendly_id.git', branch: '4.1.x'
+gem 'font-awesome-rails'
 gem 'gravtastic'
 gem 'gritter'
 gem 'haml-rails'
