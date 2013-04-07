@@ -41,13 +41,4 @@ feature 'User follows' do
     visit follows_path
     page.should have_content topic.name
   end
-
-  scenario "a message" do
-    user = sign_in
-    message = create :message
-    Capybara.current_session.driver.post follows_path(follow: {followable_id: message.id, followable_type: message.class})
-    small_message = create :small_message, message: message
-    visit notifications_path
-    page.should have_content small_message.content
-  end
 end
