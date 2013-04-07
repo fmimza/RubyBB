@@ -38,7 +38,7 @@ fr:
     forum: Forum
     forums: Forums
     new: Nouveau
-    edit: Modifier
+    edit: modifier
     destroy: Supprimer
     pin_on: Épingler
     pinned: Épinglé
@@ -142,7 +142,6 @@ fr:
       title: Suivis
       no_user: Vous ne suivez encore aucun utilisateur.
       no_topic: Vous ne suivez encore aucun sujet.
-      no_message: Vous ne suivez encore aucun message.
 
   users:
     gender:

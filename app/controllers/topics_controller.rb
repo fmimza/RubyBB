@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
     jump_to_newest_or_bookmark && return
     current_user.try :bookmark!, @topic
 
-    @messages = @topic.messages.and_stuff.with_follows(current_user).page params[:page]
+    @messages = @topic.messages.and_stuff.page params[:page]
     @message = @topic.messages.build
 
     @topic.viewed_by!(current_user) if @topic.last_page?(params[:page])

@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
-    @message = Message.and_stuff.with_follows(current_user).find(params[:id])
+    @message = Message.and_stuff.find(params[:id])
     authorize! :read, @message
     @unread = true
 

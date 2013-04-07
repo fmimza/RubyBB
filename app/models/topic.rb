@@ -45,7 +45,7 @@ class Topic < ActiveRecord::Base
   end
 
   def self.default_direction column
-    %w[messages_count views_count updated_at].include?(column) ? 'desc' : 'asc'
+    %w[follows_count messages_count views_count updated_at].include?(column) ? 'desc' : 'asc'
   end
 
   def preview

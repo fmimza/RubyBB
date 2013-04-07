@@ -17,9 +17,3 @@
 - else
   %p.no_results= t('.no_topic')
 
-- if @messages.any?
-  .span12
-    %hr
-    = render 'messages/list'
--else
-  %p.no_results= t('.no_message')

@@ -143,7 +143,6 @@ en:
       title: Follows
       no_user: You don't follow any user yet.
       no_topic: You don't follow any topic yet.
-      no_message: You don't follow any message yet.
 
   users:
     gender:
@@ -159,7 +158,7 @@ en:
       admin: Admin
       more: "(%{a_day} a day, %{total} %)"
       see_messages: See messages
-      edit: Edit
+      edit: edit
 
   bookmarks:
     index:

@@ -4,7 +4,6 @@
     %p= username message.user
     %p
       = render 'shared/avatar', user: message.user, size: 100
-    %p.action= link_to t('common.edit'), edit_message_path(message, page: params[:page]) if can? :update, message
   %td
     - if @meta
       .meta
@@ -43,9 +42,8 @@
       - if !message.notification_read?
         %p.hidden= link_to t('common.read'), notification_path(message.notification_id), method: :put, rel: :nofollow, remote: true, class: 'read_notification'
     %p{title: l(message.created_at)}= time_ago_in_words message.created_at
-    - if can?(:create, Follow.new) && !params[:q] && current_user.try(:id) != message.user_id && !@history
-      = render 'follows/show', id: message.follow_id, followable_id: message.id, followable_type: 'Message'
-      - if message.user && !@as_notifications
-        %p.quote-that.btn-link{'data-user' => message.user.name, 'data-content' => message.content}= t('.quote')
+    - if !@as_notifications && message.user && can?(:create, @message)
+      %p.quote-that.btn-link{'data-user' => message.user.name, 'data-content' => message.content}= t('.quote')
     - if @history
       %p.use-that.btn-link{'data-content' => message.content}= t('.use')
+    %p.action= link_to t('common.edit'), edit_message_path(message, page: params[:page]) if can? :update, message
