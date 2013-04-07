@@ -8,7 +8,7 @@ class NotificationsController < ApplicationController
     @folded = true
     @meta = true
     @as_notifications = true
-    @messages = current_user.notified_messages.select('messages.*, notifications.id as notification_id, notifications.read as notification_read').includes(:topic, :user, :updater, :small_messages => :user).with_follows(current_user).order('notifications.id desc').page(params[:page])
+    @messages = current_user.notified_messages.select('messages.*, notifications.id as notification_id, notifications.read as notification_read').includes(:topic, :user, :updater, :small_messages => :user).order('notifications.id desc').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
