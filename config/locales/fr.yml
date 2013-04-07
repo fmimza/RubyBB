@@ -200,8 +200,9 @@ fr:
      new_messages: 'New messages!'
      topics: Topics
      messages: Msg
+     follows: Étoiles
      views: Vues
-     last: Dernier
+     activity: Activité
      last_page: dernière page
     breadcrumb:
       new_message: Répondre
@@ -284,8 +285,8 @@ fr:
         gender: Genre
         location: Localisation
         website: Site web
-        created_at: Créé le
-        updated_at: Vu le
+        created_at: Inscrit le
+        updated_at: Activité
         topics_count: Topics
         messages_count: Messages
         notify: E-mails

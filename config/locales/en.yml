@@ -201,8 +201,9 @@ en:
      new_messages: 'New messages!'
      topics: Topics
      messages: Msg
+     follows: Stars
      views: Views
-     last: Last
+     activity: Activity
      last_page: last page
     breadcrumb:
       new_message: Reply
@@ -286,7 +287,7 @@ en:
         location: Location
         website: Website
         created_at: Joined
-        updated_at: Last visited
+        updated_at: Activity
         topics_count: Topics
         messages_count: Messages
         notify: E-mails

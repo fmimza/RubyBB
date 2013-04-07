@@ -26,14 +26,13 @@
             - if can? :position, forum
               %td.position
                 ☰
-            - cache "forum-#{forum.id}-#{forum.updated_at}-#{forum.last_message_id}" do
+            - cache "forum-v2-#{forum.id}-#{forum.updated_at}-#{forum.last_message_id}" do
               %td
                 = link_to forum, :class => :title do
                   %p
                     %strong= forum.name
                 - if forum.children.any?
                   %p
-                    = t('.see_also')
                     =raw forum.children.map{|f| link_to f.name, forum_path(f) if can? :read, f}.reject(&:nil?).join(', ')
                 - if forum.content.present?
                   %p= forum.content

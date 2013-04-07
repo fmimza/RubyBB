@@ -6,9 +6,10 @@
       - if @pinnable
         %th.icons
       %th= sortable Topic, :name, t('.topics')
+      %th.fixed.number.hidden-phone= sortable Topic, :follows_count, t('.follows')
       %th.fixed.number.hidden-phone= sortable Topic, :messages_count, t('.messages')
       %th.fixed.number.hidden-phone= sortable Topic, :views_count, t('.views')
-      %th.infos.hidden-portrait-phone= sortable Topic, :updated_at, t('.last')
+      %th.infos.hidden-portrait-phone= sortable Topic, :updated_at, t('.activity')
     - pinned = false
     - @topics.each do |topic|
       %tr{class: "#{pinned && !topic.pinned && @pinnable ? 'separator' : nil} #{@folded ? 'folded' : nil}"}
@@ -42,6 +43,8 @@
               - if topic.messages_count > 20
                 –
                 = link_to t('.last_page'), topic_path(topic, page: topic.last_page)
+        %td.number.hidden-phone
+          %p= topic.follows_count
         %td.number.hidden-phone
           %p= topic.messages_count
         %td.number.hidden-phone
