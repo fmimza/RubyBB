@@ -9,7 +9,7 @@ class Forum < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :history, :scoped], :scope => :domain_id
 
   has_many :children, :class_name => 'Forum', :foreign_key => 'parent_id'
-  belongs_to :parent, :class_name => 'Forum', :foreign_key => 'parent_id'
+  belongs_to :parent, :class_name => 'Forum', :foreign_key => 'parent_id', :touch => true
   has_many :topics, :dependent => :destroy
   has_many :messages, :dependent => :destroy
   has_many :follows, :as => :followable, :dependent => :destroy
@@ -22,11 +22,19 @@ class Forum < ActiveRecord::Base
 
   attr_accessible :content, :name, :parent_id
 
+  after_save :touch_parent, :if => :parent_id_changed?
+
   def all_topics
     Topic.child_of(self)
   end
 
   def all_messages
     Message.where(:forum_id => children.map(&:id) << id)
+  end
+
+  private
+
+  def touch_parent
+    Forum.find(parent_id_was).touch
   end
 end
