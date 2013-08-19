@@ -25,6 +25,7 @@ group :test do
   gem 'fakeweb'
   gem 'populator'
   gem 'rspec-rails'
+  gem 'simplecov'
 end
 
 # Deploy with Capistrano
