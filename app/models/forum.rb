@@ -22,7 +22,7 @@ class Forum < ActiveRecord::Base
 
   attr_accessible :content, :name, :parent_id
 
-  after_save :touch_parent, :if => :parent_id_changed?
+  after_save :touch_parent, :if => :parent_id_was
 
   def all_topics
     Topic.child_of(self)
