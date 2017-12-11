@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     Time.zone = cookies['time_zone']
-    I18n.locale = http_accept_language.preferred_language_from(%w[en fr es])
+    I18n.locale = http_accept_language.preferred_language_from(%w[en fr es zh])
 
     # Also update updated_at
     current_user.update_attribute :locale, I18n.locale if current_user
