@@ -1,0 +1,292 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+zh-CN:
+  search:
+    title: 搜索
+    find: 查找
+    no_results: '没有找到任何结果。'
+    error: '对不起，你的查询非法。'
+
+  date:
+    formats:
+      default: "%Y-%m-%d"
+  time:
+    formats:
+      default: "%Y-%m-%d, %I:%M %p"
+
+  acl:
+    all: 所有
+    humans: 人
+    title: '访问控制'
+    hint: '关键字: "所有", "人", 用户名, 组名。'
+
+  common:
+    create: 发布
+    update: 更新
+    read: '读'
+    back: 退回
+    by: 由
+    in: 在
+    stats: 状态
+    staff: 员工
+    sysadmin: 系统管理员
+    banned: 被禁止
+    user: 用户
+    moderator: 审查人
+    admin: 管理员
+    forum: 论坛
+    forums: 论坛
+    new: 新建
+    edit: 编辑
+    destroy: 销毁
+    pin_on: 固定
+    pinned: 已固定
+    unpin: 解除固定
+    are_you_sure: "你确定？"
+    follow: 关注
+    remove: "×"
+    unfollow: 取消关注
+    na: "不可用"
+    topics_count:
+      zero: "%{count} 话题"
+      one: "%{count} 话题"
+      other: "%{count} 话题"
+    messages_count:
+      zero: "%{count} 消息"
+      one: "%{count} 消息"
+      other: "%{count} 消息"
+
+  layouts:
+    application:
+      powered_by: 技术支持
+      about: 关于
+    navigation:
+      settings: 设置
+      groups: 组
+      forums: 论坛
+      users: 用户
+      user: 用户信息
+      edit: 编辑
+      follows: 关注
+      notifications: 通知
+      favorites: 收藏
+      bookmarks: 书签
+      logout: 注销
+      login: 登录
+      sign_up: 注册
+    search:
+      title: "例子"
+      content: "话题:\"%{topic}\"<br>用户:%{user} %{word1}<br>论坛:%{forum} -%{word2}<br>%{word3}*"
+
+  pages:
+    about:
+      title: 标题
+
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."
+
+  mailer:
+    title: "\"%{topic}\"中的新消息"
+    new_message: "用户 %{user}在\"%{topic}\"发布了新消息："
+    context: "根据上下文察看消息： %{url}"
+    change: "改变通知设置：%{url}"
+
+  groups:
+    created:
+      public: 成功创建公共组。
+      private: 成功创建私有组。
+    updated: 成功更新组。
+    status:
+      private: 私有
+      public: 公共
+    role: 角色
+    member: 成员
+    owner: 所有者
+    index:
+      title: 组
+      edit: 管理
+      no_results: '目前还没有创建任何组。'
+    new:
+      title: 新建组
+    edit:
+      title: 编辑组
+
+  domains:
+    updated: 成功更新设置。
+    show:
+      title: 设置
+      update: 更新
+      more: 高级选项...
+    new:
+      welcome: 欢迎来到 RubyBB 论坛
+      create: 创建
+      about: "通过将\"www\"替换成你想要的文字来创建你自己的消息板："
+      more: 它是免费的而且不含广告！
+      available: 可用
+      taken: 已被占用 :(
+      format: 格式错误！
+
+  notifications:
+    index:
+      title: 通知
+      clear: 清除
+      mark_all_as_read: 将所有标记为已读
+
+  follows:
+    index:
+      title: 关注
+      no_user: 你目前还没有关注任何用户。
+      no_topic: 你目前还没有关注任何话题。
+
+  users:
+    gender:
+      male: 男
+      female: 女
+      other: 其他 
+    index:
+      title: 用户
+      age: 年龄
+    show:
+      stats: 状态
+      graph: 图表
+      admin: 管理员
+      more: "(每日 %{a_day}, 共 %{total} %)"
+      see_messages: 察看消息
+      edit: 编辑
+
+  bookmarks:
+    index:
+      title: 书签
+      clear: 重置追踪
+
+  forums:
+    example: 示例论坛
+    content_example: '你可以单击"示例论坛"后单击"编辑"来编辑详细信息。'
+    created: 已成功创建论坛。
+    updated: 已成功更新论坛。
+    index:
+      see_also: '同时察看：'
+      title: "论坛"
+      users:
+        zero: "%{count} 个用户， "
+        one: "%{count}  个用户， "
+        other: "%{count} 个用户， "
+      online:
+        zero: "%{count} 个在线。"
+        one: "%{count} 个在线："
+        other: "%{count}  个在线："
+      counters: "在 %{topics} 话题中共有 %{messages} 条消息。"
+    show:
+      title: "%{name}"
+    breadcrumb:
+      new_topic: 新建话题
+    new:
+      title: 新建论坛
+    edit:
+      title: 编辑论坛
+  topics:
+    example: "示范话题"
+    created: 已成功创建话题。
+    updated: 已成功更新话题。
+    show:
+      title: "%{name}"
+    list:
+     new_messages: '新消息！'
+     topics: 话题
+     messages: 消息
+     follows: 星级
+     views: 察看
+     activity: 动态
+     last_page: 最后页面
+    breadcrumb:
+      new_message: 回复
+    new:
+      title: 新建话题
+    edit:
+      title: 编辑话题
+    form:
+      more: 访问控制...
+  small_messages:
+    example: '你好！单击小叉来删除这条消息 :)'
+  messages:
+    example: '示范消息。单击顶部的 "编辑"来编辑话题标题，或者单击左边的"编辑"来编辑内容。'
+    created: 成功发布消息。
+    updated: 成功更新消息。
+    index:
+      title: 查找结果
+    show:
+      quote: 引用
+      download: "下载附件: %{name}"
+      use: 使用这个
+      updated_by: "由 %{name} 在 %{date} 更新"
+      bot: "%{name} 是机器人"
+      human: "%{name} 是人类"
+      i_am_a_bot: "你不能发帖: 你需要等别人确认你的帐户。"
+      it_is_a_bot: "%{name} 不能发帖: 他/她需要等待帐户确认。"
+    new:
+      title: 新消息
+    edit:
+      title: 编辑消息
+    form:
+      more: 选项...
+
+  activerecord:
+    models:
+      user: 用户
+      forum: 论坛
+      topic: 话题
+      message: 消息
+      group: 组
+    attributes:
+      domain:
+        title: 标题
+        description: 描述信息
+        keywords: 关键字
+        banner: 标题栏
+        url: 标题栏的地址
+        theme: 主题颜色
+        content: 主页内容
+        css: CSS
+      forum:
+        name: 标题
+        parent: 父论坛
+        content: 描述信息
+        acl_view: 论坛可见
+        acl_read: 话题可见
+        acl_write: 创建话题
+        acl_admin: 审稿人
+      topic:
+        name: 标题
+        acl_view: 话题可见
+        acl_read: 消息可见
+        acl_write: 消息创建
+        acl_admin: 审稿人
+      message:
+        content: 消息
+        attachment: 附件 (1 MB)
+      group:
+        name: 名字
+        status: 状态
+        user_ids: 用户
+        users_count: 用户
+      user:
+        email: 电子邮件
+        password: 密码
+        current_password: 当前密码
+        password_confirmation: 确认密码
+        name: 名字
+        birthdate: 生日
+        gender: 性别
+        location: 位置
+        website: 网站
+        created_at: 加入时间
+        updated_at: 活动
+        topics_count: 话题
+        messages_count: 消息
+        notify: 电子邮件

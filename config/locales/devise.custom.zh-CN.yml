@@ -1,0 +1,13 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+zh-CN:
+  devise:
+    sessions:
+      new:
+        email_or_name: 电子邮件或用户名
+    registrations:
+      edit:
+        my_profile: 我的个人信息
+        more: '编辑我的名字，电子邮件或密码...'
+        update: 更新
+        new_password: 新密码
