@@ -1,0 +1,13 @@
++# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+ +
+ +tr:
+ +  devise:
+ +    sessions:
+ +      new:
+ +        email_or_name: E-posta ya da kullanıcı adı
+ +    registrations:
+ +      edit:
+ +        my_profile: Profilim
+ +        more: 'adımı, e-postamı veya şifremi düzenle ...'
+ +        update: Güncelle
+ +        new_password: Yeni şifre
