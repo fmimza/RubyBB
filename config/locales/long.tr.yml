@@ -63,19 +63,19 @@ tr:
     Kimse on saniyede bir birden fazla mesaj veya yorum yayınlayamaz.
 
     ### Özellikler
-    * comment messages for small talks under each message.
-    * follow message/topic/forum/user to be notified in real-time for news your are waiting for.
-    * preview what your are writing in real-time: what you see is what you post.
-    * browser crash? your message is autosaved while your are tiping.
-    * awesome search engine: wildcard, exclusion, sentences, meta...
-    * log in with Facebook or Google.
-    * autolink things with #hashtag and @username in your messages.
-    * renaming category and topics won't break anything: old links will redirect to the new ones.
-    * RSS in each category and each topic.
-    * add attachments to your messages.
-    * precise groups and access controls management.
-    * and custom your CSS!
+    * küçük konuşmalar için her bir mesajın altında yorum mesajları.
+    * beklediğiniz haberler için gerçek zamanlı olarak haberdar edilmek için mesajı/konuyu/forumu/kullanıcıyı takip edin.
+    * gerçek zamanlı olarak ne yazdığınızı önizleyin: gördüğünüz yazı gönderdiğiniz şeydir.
+    * tarayıcı çökmesi? siz yazarken mesajınız otomatik olarak kaydedilir.
+    * harika arama motoru: joker karakter, istisnalar, cümleler, meta...
+    * Facebook veya Google ile giriş yapın.
+    * mesajlarınızda #hashtag ve @username bulunan şeyleri otomatik olarak ilişkilendirin.
+    * kategori ve konuları yeniden adlandırmak hiçbir şeyi bozmaz: eski bağlantılar yeni olanlara yönlendirecektir.
+    * Her kategoride ve her konuda RSS.
+    * mesajlarınıza ek dosyalar ekleyin.
+    * açık gruplar ve erişim kontrolü yönetimi.
+    * ve özel CSS!
 
-    ### Contact
-    Bug report, feature request, help, question, translation, encouragement...
-    Go to the primary [www.rubybb.com](http://www.rubybb.com/) bulletin board, register and post: we enjoy communication!
+    ### İletişim
+    Hata raporu, özellik talebi, yardım, soru, çeviri, teşvik ...
+    Birincil [www.rubybb.com] (http://www.rubybb.com/) bülten panosuna gidin, kaydolun ve yayınlayın: iletişimden hoşlanıyoruz!
