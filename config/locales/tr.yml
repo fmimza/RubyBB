@@ -59,29 +59,29 @@ tr:
 
   layouts:
     application:
-      powered_by: Powered by
-      about: About
+      powered_by: Tarafından desteklenmektedir
+      about: Hakkında
     navigation:
-      settings: Settings
-      groups: Groups
-      forums: Forums
-      users: Users
-      user: Profile
-      edit: Edit
-      follows: Follows
-      notifications: Notifications
-      favorites: Favorites
-      bookmarks: Bookmarks
-      logout: Logout
-      login: Login
-      sign_up: Register
+      settings: Ayarlar
+      groups: Gruplar
+      forums: Forumlar
+      users: Kullanıcılar
+      user: Profil
+      edit: Düzenle
+      follows: Takkip ettikleri
+      notifications: Bildirimler
+      favorites: Favoriler
+      bookmarks: Yer imleri
+      logout: Çıkış Yap
+      login: Giriş
+      sign_up: Kayıt ol
     search:
-      title: "Examples"
-      content: "topic:\"%{topic}\"<br>user:%{user} %{word1}<br>forum:%{forum} -%{word2}<br>%{word3}*"
+      title: "Örnekler"
+      content: "konu:\"%{topic}\"<br>kullanıcı:%{user} %{word1}<br>forum:%{forum} -%{word2}<br>%{word3}*"
 
   pages:
     about:
-      title: À propos
+      title: Yaklaşık
 
   views:
     pagination:
@@ -92,113 +92,113 @@ tr:
       truncate: "..."
 
   mailer:
-    title: "New message in \"%{topic}\""
-    new_message: "A new message has been posted in \"%{topic}\" by %{user}:"
-    context: "See this message with its context: %{url}"
-    change: "Change notifications settings: %{url}"
+    title: "Şuradaki yeni mesajlar: \"%{topic}\""
+    new_message: "Şu konuma gönderilen yeni mesajlar \"%{topic}\" by %{user}:"
+    context: "Şu mesajı bağlamı ile birlikte görüntüle: %{url}"
+    change: "Bildirim ayarlarını değiştir: %{url}"
 
   groups:
     created:
-      public: Public group was successfully created.
-      private: Private group was successfully created.
-    updated: Group was successfully updated.
+      public: Ortak grup başarıyla oluşturuldu.
+      private: Özel grup başarıyla oluşturuldu.
+    updated: Grup başarıyla oluşturuldu.
     status:
-      private: private
-      public: public
-    role: Role
-    member: member
-    owner: owner
+      private: özel
+      public: ortak
+    role: rol
+    member: üye
+    owner: sahip
     index:
-      title: Groups
-      edit: manage
-      no_results: 'No groups have been created yet.'
+      title: Gruplar
+      edit: yönet
+      no_results: 'Henüz hiçbir grup oluşturulmadı.'
     new:
-      title: New group
+      title: Yeni grup
     edit:
-      title: Edit group
+      title: Grubu düzenle
 
   domains:
-    updated: Settings were successfully updated.
+    updated: Ayarlar başarıyla güncellendi.
     show:
-      title: Settings
-      update: Update
-      more: advanced options...
+      title: Ayarlar
+      update: Güncelle
+      more: gelişmiş ayarlar...
     new:
-      welcome: Welcome to the RubyBB forums
-      create: Create
-      about: "Create your own bulletin board by replacing \"www\" by anything you want:"
-      more: It's free and ad-free!
-      available: available !
-      taken: already taken :(
-      format: bad format!
+      welcome: RubyBB forumlarına hoşgeldiniz
+      create: Oluştur
+      about: "\"www\"yerine istediğiniz herhangi bir şey yazarak kendi ilan panonuzu oluşturun:"
+      more: Ücretsiz ve reklamsız!
+      available: mevcut !
+      taken: zaten alınmış :(
+      format: bozuk format!
 
   notifications:
     index:
-      title: Notifications
-      clear: Clear
-      mark_all_as_read: Mark all as read
+      title: Bildirimler
+      clear: Temizle
+      mark_all_as_read: Hepsini okundu olarak işaretle
 
   follows:
     index:
-      title: Follows
-      no_user: You don't follow any user yet.
-      no_topic: You don't follow any topic yet.
+      title: Takipler
+      no_user: Henüz hiçbir kullanıcıyı takip etmiyorsun.
+      no_topic: Henüz hiçbir konuyu takip etmiyorsun.
 
   users:
     gender:
-      male: male
-      female: female
-      other: other
+      male: erkek
+      female: kadın
+      other: diğer
     index:
-      title: Users
-      age: Age
+      title: Kullanıcılar
+      age: Yaş
     show:
-      stats: Stats
-      graph: Graph
-      admin: Admin
-      more: "(%{a_day} a day, %{total} %)"
-      see_messages: See messages
-      edit: edit
+      stats: İstatistikler
+      graph: Çizelge
+      admin: Yönetici
+      more: "(%{a_day} günlük, %{total} %)"
+      see_messages: Mesajları gör
+      edit: düzenle
 
   bookmarks:
     index:
-      title: Bookmarks
-      clear: Reinit tracking
+      title: Yer imleri
+      clear: Sıfırlama izleme
 
   forums:
-    example: Demo forum
-    content_example: 'You can edit this description by clicking "Demo forum" and then "Edit".'
-    created: Forum was successfully created.
-    updated: Forum was successfully updated.
+    example: Deneme forumu
+    content_example: 'Bu açıklamayı, "Demo forumu"nu ve ardından "Düzenle"yi tıklayarak düzenleyebilirsiniz..'
+    created: Forum başarılı bir şekilde oluşturuldu.
+    updated: Forum başarılı bir şekilde güncellendi.
     index:
-      see_also: 'See also:'
-      title: "Forums"
+      see_also: 'Ayrıca bakınız:'
+      title: "Forumlar"
       users:
-        zero: "%{count} user, "
-        one: "%{count} user, "
-        other: "%{count} users, "
+        zero: "%{count} kullanıcı, "
+        one: "%{count} kullanıcı, "
+        other: "%{count} kullanıcılar, "
       online:
-        zero: "%{count} online."
-        one: "%{count} is online:"
-        other: "%{count} are online:"
-      counters: "%{messages} messages in %{topics} topics."
+        zero: "%{count} çevrimiçi."
+        one: "%{count} şu an çevrimiçi:"
+        other: "%{count} şu an çevrimiçi:"
+      counters: "%{messages} şuradaki mesajlar %{topics} topics."
     show:
       title: "%{name}"
     breadcrumb:
-      new_topic: New topic
+      new_topic: Yeni Konu
     new:
-      title: New forum
+      title: Yeni forum
     edit:
-      title: Editing forum
+      title: Düzenleme forumu
   topics:
     example: "Demo topic"
-    created: Topic was successfully created.
-    updated: Topic was successfully updated.
+    created: Konu başarıyla oluşturuldu.
+    updated: Konu başarıyla güncellendi.
     show:
       title: "%{name}"
     list:
-     new_messages: 'New messages!'
-     topics: Topics
+     new_messages: 'Yeni mesajlar!'
+     topics: Konular
      messages: Msg
      follows: Stars
      views: Views
