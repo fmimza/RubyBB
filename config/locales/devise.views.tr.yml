@@ -1,0 +1,57 @@
+en:
+  devise:
+    confirmations:
+      new:
+        resend_confirmation_instructions: Doğrulama talimatlarını tekrar gönder
+    mailer:
+      confirmation_instructions:
+        action: Hesabımı doğrula
+        greeting: Hoşgeldiniz %{recipient}!
+        instruction: ! 'Hesap e-postanızı aşağıdaki bağlantıyı kullanarak teyit edebilirsiniz:'
+        subject: Doğrulama talimatları
+      reset_password_instructions:
+        action: Change my password
+        greeting: Merhaba %{recipient}!
+        instruction: Birisi şifrenizi değiştirmek için bir bağlantı talep etti ve bunu aşağıdaki bağlantı vasıtasıyla yapabilirsiniz.
+        instruction_2: Bunu istemediyseniz, lütfen bu e-postayı görmezden gelin.
+        instruction_3: Yukarıdaki bağlantıya erişip yeni bir şifre oluşturana kadar şifreniz değişmeyecektir.
+        subject: Şifre talimatlarını sıfırla
+      unlock_instructions:
+        action: Hesabımı kilidini aç
+        greeting: Merhaba %{recipient}!
+        instruction: ! 'Hesabınızın kilidini açmak için aşağıdaki bağlantıyı tıklayın:'
+        message: Aşırı miktarda oturum açma girişiminde başarısız olunduğundan hesabınız kilitlendi.
+        subject: Talimatların kilidini aç
+    passwords:
+      new:
+        forgot_your_password: Şifrenizi mi unuttunuz?
+        send_me_reset_password_instructions: Bana şifre sıfırlama talimatlarını gönder
+      edit:
+        change_your_password: Şifreni değiştir
+        new_password: Yeni şifre
+        confirm_new_password: Yeni şifreyi onayla
+        change_my_password: Şifremi Değiştir
+    registrations:
+      edit:
+        are_you_sure: Emin misiniz?
+        cancel_my_account: Hesabımı iptal et
+        leave_blank_if_you_don_t_want_to_change_it: değiştirmek istemiyorsan boş bırak
+        title: Düzenle %{resource}
+        we_need_your_current_password_to_confirm_your_changes: değişikliklerinizi onaylamak için güncel şifrenize ihtiyacımız var
+        notify: E-posta ile bildirim alma (bir sonraki okumaya kadar konu başına bir tane)
+      new:
+        sign_up: Kayıt ol
+    sessions:
+      new:
+        sign_in: Oturum aç
+    shared:
+      links:
+        didn_t_receive_confirmation_instructions: Doğrulama talimatını almadınız mı?
+        didn_t_receive_unlock_instructions: Kilit açma talimatlarını almadınız mı?
+        forgot_your_password: Şifrenizi mi unuttunuz?
+        sign_in: Oturum aç
+        sign_in_with_provider: Şununla oturum aç: %{provider}
+        sign_up: Kayıt ol
+    unlocks:
+      new:
+        resend_unlock_instructions: Kilit açma talimatlarını tekrar gönder
