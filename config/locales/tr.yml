@@ -199,94 +199,94 @@ tr:
     list:
      new_messages: 'Yeni mesajlar!'
      topics: Konular
-     messages: Msg
-     follows: Stars
-     views: Views
-     activity: Activity
-     last_page: last page
+     messages: Msj
+     follows: Yıldızlar
+     views: Görüntülemeler
+     activity: Aktivite
+     last_page: son sayfa
     breadcrumb:
-      new_message: Reply
+      new_message: Cevap
     new:
-      title: New topic
+      title: Yeni Konu
     edit:
-      title: Editing topic
+      title: Konuyu düzenleme
     form:
-      more: access control...
+      more: erişim kontrolü...
   small_messages:
-    example: 'Hi! Delete this small message by clicking the cross :)'
+    example: 'Merhaba! Çarpıya tıklayarak bu küçük iletiyi silin :)'
   messages:
-    example: 'Demo message. Click "Edit" on the top to edit topic title, or click "Edit" on the left to edit this content.'
-    created: Message was successfully posted.
-    updated: Message was successfully updated.
+    example: 'Demo mesajı. Konunun başlığını düzenlemek için üstteki 'Düzenle' yi tıklayın veya bu içeriği düzenlemek için soldaki 'Düzenle' yi tıklayın.'
+    created: Mesaj başarılı bir şekilde gönderildi.
+    updated: İleti başarıyla güncellendi.
     index:
-      title: Search results
+      title: Arama sonuçları
     show:
-      quote: quote
-      download: "Download attached file: %{name}"
+      quote: alıntı
+      download: "Ekli dosyayı indir: %{name}"
       use: use this
-      updated_by: "Updated by %{name} at %{date}"
-      bot: "%{name} is a bot"
-      human: "%{name} is a human"
-      i_am_a_bot: "You cannot post anymore: you have to wait someone confirms your account."
-      it_is_a_bot: "%{name} cannot posts anymore: he or she has to wait account confirmation."
+      updated_by: "%{name} tarafından %{date} tarihinde güncellendi."
+      bot: "%{name} bir bottur"
+      human: "%{name} bir insandır"
+      i_am_a_bot: "Artık gönderemezsiniz: birinin hesabınızı doğrulamasını beklemek zorundasınız."
+      it_is_a_bot: "%{name} artık mesaj gönderemiyor: hesap doğrulamasını beklemesi gerekiyor.."
     new:
-      title: New message
+      title: Yeni mesajlar
     edit:
-      title: Editing message
+      title: Mesaj düzenleme
     form:
-      more: options...
+      more: seçenekler...
 
   activerecord:
     models:
-      user: User
+      user: Kullanıcı
       forum: Forum
-      topic: Topic
-      message: Message
-      group: Group
+      topic: Konu
+      message: Mesaj
+      group: Grup
     attributes:
       domain:
-        title: Title
-        description: Description
-        keywords: Keywords
-        banner: Banner
-        url: Url on banner
-        theme: Theme color
-        content: Home content
+        title: Başlık
+        description: Açıklama
+        keywords: Anahtar kelimeler
+        banner: Afiş
+        url: Afiş üzerinde URL
+        theme: Tema rengi
+        content: Ana sayfa içeriği
         css: CSS
       forum:
-        name: Title
-        parent: Parent
-        content: Description
-        acl_view: Forum visible
-        acl_read: Topics visible
-        acl_write: Topics creation
-        acl_admin: Moderators
+        name: Başlık
+        parent: Kaynak
+        content: Açıklama
+        acl_view: Görünen forum
+        acl_read: Görünen konular
+        acl_write: Konu oluşturma
+        acl_admin: Moderatörler
       topic:
-        name: Title
-        acl_view: Topic visible
-        acl_read: Messages visible
-        acl_write: Messages creation
-        acl_admin: Moderators
+        name: Başlık
+        acl_view: Görünen konu
+        acl_read: Görünen mesaj
+        acl_write: Mesaj oluşturma
+        acl_admin: Moderatörler
       message:
-        content: Message
-        attachment: Attachment (1 MB)
+        content: Mesaj
+        attachment: Ek dosya(1 MB)
       group:
-        name: Name
-        status: Status
-        user_ids: Users
-        users_count: Users
+        name: İsim
+        status: Durum
+        user_ids: Kullanıcılar
+        users_count: Kullanıcılar
       user:
-        email: Email
-        password: Password
-        current_password: Current password
-        password_confirmation: Password confirmation
-        name: Name
-        birthdate: Birthdate
-        gender: Gender
-        location: Location
+        email: E-posta
+        password: Şifre
+        current_password: Mevcut şifre
+        password_confirmation: Şifre doğrulama
+        name: İsim
+        birthdate: Doğum tarihi
+        gender: Cinsiyen
+        location: Konum
         website: Website
-        created_at: Joined
-        updated_at: Activity
-        topics_count: Topics
-        messages_count: Messages
-        notify: E-mails
+        created_at: Katılım
+        updated_at: Activite
+        topics_count: Konular
+        messages_count: Mesajlar
+        notify: E-postalar
